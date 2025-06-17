@@ -1,0 +1,19 @@
+---
+import Navbar from "@/components/shared/Navbar.astro";
+import Layout from "@/layouts/Layout.astro";
+import ContactSection from "@/components/sections/contact/Contact.astro";
+---
+
+<Layout>
+  <Navbar className="bg-white" />
+  <main
+    class="w-full h-[calc(100vh-var(--h-navbar-mobile))] xl:h-[calc(100vh-var(--h-navbar))]"
+  >
+    <section
+      class="relative h-full overflow-hidden flex flex-col items-center justify-center
+      px-2 xs:px-10 md:px-20"
+    >
+      <ContactSection />
+    </section>
+  </main>
+</Layout>

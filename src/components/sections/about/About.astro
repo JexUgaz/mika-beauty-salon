@@ -1,0 +1,76 @@
+---
+import Carousel from "@/components/client/Carousel";
+import ArrowBoxed from "@/components/icons/ArrowBoxed.astro";
+import PictureResponsive from "@/components/shared/PictureResponsive.astro";
+import { BreakPoints } from "@/types/BreakPoints";
+import tacoImage from "@/assets/images/about/taco.png";
+import ImageResponsive from "@/components/shared/ImageResponsive.astro";
+const imagesCarousel = Array.from({ length: 6 }, (_, i) => i + 1);
+---
+
+<PictureResponsive
+  sources={["/about/background-vertical.jpg", "/about/background.webp"]}
+  breakpoints={[BreakPoints.XL]}
+  classPicture="absolute top-0 left-0 -z-200 min-w-full min-h-screen h-full w-full"
+  classImage="min-w-full min-h-screen object-cover h-full w-full"
+/>
+
+<ImageResponsive
+  src={tacoImage}
+  widths={[140, 180, 200, 250, 300, 400]}
+  breakpoints={[
+    BreakPoints.XS,
+    BreakPoints.SM,
+    BreakPoints.MD,
+    BreakPoints.LG,
+    BreakPoints["3XL"],
+  ]}
+  class="absolute bottom-0 right-0 z-10"
+/>
+
+<Carousel
+  client:load
+  images={imagesCarousel.map((i) => `/images/about/${i}.webp`)}
+  className="w-[300px] h-[300px] mt-20 mb-5 xl:my-0 xl:w-[400px] xl:h-[450px] 2xl:w-[500px] 2xl:h-[550px] 3xl:w-[600px] 3xl:h-[650px]"
+  prevButtonClass="-left-15 sm:-left-20"
+  nextButtonClass="-right-15 sm:-right-20"
+/>
+<div
+  class="z-1 pt-5 px-5
+    xs:px-10 sm:px-20 lg:px-45
+    xs:pt-10
+    xl:py-30 xl:max-w-2xl xl:px-0 xl:h-full"
+>
+  <div class="flex items-center justify-start -translate-x-3">
+    <ArrowBoxed class="size-13 xl:size-20" />
+    <h2
+      class="font-extrabold text-mika-primary text-lg sm:text-3xl xl:text-4xl"
+    >
+      Nosotros
+    </h2>
+  </div>
+  <h3
+    class="mt-2 font-bold text-mika-primary
+    text-base ms-5
+    xs:mt-8 sm:text-2xl
+    xl:text-3xl xl:ms-10 xl:mt-10"
+  >
+    ● Objetivo:
+  </h3>
+  <p
+    class="text-justify leading-relaxed text-pretty text-sm
+     mt-3 xs:mt-6 sm:text-lg
+     xl:text-xl xl:mt-10"
+  >
+    Este proyecto busca crear un espacio seguro y acogedor donde, a través del
+    baile y clases gratuitas, personas que han vivido violencia puedan
+    reconectar con su cuerpo, recuperar la confianza y fortalecer su autoestima.
+    Cada movimiento es una herramienta de sanación, empoderamiento y libertad
+    personal.
+    <!-- <br /><br /> Además de brindar un espacio de expresión, buscamos construir
+    una comunidad basada en el respeto, la empatía y el apoyo mutuo. Aquí, el baile
+    no solo es una forma de arte, sino también un puente para recuperar la alegría,
+    resignificar el cuerpo y recordar que cada persona merece sentirse libre, fuerte
+    y acompañada en su proceso de sanación. -->
+  </p>
+</div>

@@ -1,0 +1,44 @@
+---
+import type { BreakPoints } from "@/types/BreakPoints";
+
+interface Props {
+  sources: string[];
+  breakpoints: BreakPoints[];
+  alt?: string;
+  classPicture?: string;
+  classImage?: string;
+}
+
+const {
+  sources,
+  breakpoints,
+  alt,
+  classPicture = "",
+  classImage = "",
+} = Astro.props;
+
+if (sources.length === 0) {
+  throw new Error("sources[] cannot be empty.");
+}
+
+if (sources.length > 1 && breakpoints.length !== sources.length - 1) {
+  throw new Error(
+    `breakpoints[] must have ${sources.length - 1} values ​​for sources[] with ${sources.length} elements.`
+  );
+}
+
+const imgSrc = sources[sources.length - 1];
+const sourceEntries = sources.slice(0, -1);
+---
+
+<picture class={classPicture}>
+  {
+    sourceEntries.map((src, i) => (
+      <source
+        srcset={`/images${src}`}
+        media={`(max-width: ${breakpoints[i]}px)`}
+      />
+    ))
+  }
+  <img src={`/images${imgSrc}`} alt={alt} class={classImage} />
+</picture>

@@ -1,0 +1,68 @@
+---
+import InstagramIcon from "@/components/icons/InstagramIcon.astro";
+import WhatsappIcon from "@/components/icons/WhatsappIcon.astro";
+import ImageResponsive from "@/components/shared/ImageResponsive.astro";
+import PictureResponsive from "@/components/shared/PictureResponsive.astro";
+import tacoImage from "@/assets/images/contact/taco.png";
+import { BreakPoints } from "@/types/BreakPoints";
+---
+
+<PictureResponsive
+  sources={["/about/background-vertical.jpg", "/about/background.webp"]}
+  breakpoints={[BreakPoints.XL]}
+  classPicture="absolute top-0 left-0 -z-200 h-full w-full"
+  classImage="object-cover h-full w-full"
+/>
+
+<div
+  class="relative bg-mika-primary shadow-lg rounded-t-4xl p-6 w-full max-w-3xl text-white
+  h-80 lg:h-90"
+>
+  <h2
+    class="font-extrabold text-center mb-4 underline mt-10
+      text-3xl md:text-4xl xl:text-5xl"
+  >
+    Contacto
+  </h2>
+  <div class="flex justify-center mt-13">
+    <div
+      class="grid grid-cols-[60px_1fr_1fr] items-center justify-items-center gap-y-4 gap-x-2
+        lg:gap-y-8 lg:gap-x-6"
+    >
+      <WhatsappIcon class="text-white size-8 lg:size-10" />
+      <p
+        class="font-semibold col-span-2 justify-self-start
+        text-xl sm:text-2xl lg:text-3xl"
+      >
+        +51 914 044 450
+      </p>
+
+      <InstagramIcon class="text-white size-11 lg:size-15" />
+      <p
+        class="font-semibold col-span-2 justify-self-start
+          text-xl sm:text-2xl lg:text-3xl"
+      >
+        @mika.beautysalon
+      </p>
+    </div>
+  </div>
+
+  <ImageResponsive
+    src={tacoImage}
+    widths={[210, 250, 300]}
+    breakpoints={[BreakPoints.SM, BreakPoints.LG]}
+    class="animate-shoe-shake absolute top-0 left-1/2 -translate-x-1/2 -translate-y-25 sm:-translate-y-32 lg:-translate-y-40"
+  />
+</div>
+
+<div
+  class="bg-mika-primary shadow-lg rounded-b-4xl p-6 w-full max-w-3xl h-20 flex items-center justify-center
+    mt-2 lg:mt-4"
+>
+  <p
+    class="text-white font-semibold text-center
+    text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+  >
+    "Donde termina el miedo, comienza el ritmo."
+  </p>
+</div>

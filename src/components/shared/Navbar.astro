@@ -1,0 +1,90 @@
+---
+import type { NavbarItem } from "@/types/NavbarItem";
+import NavbarMobile from "@/components/client/NavbarMobile";
+import PictureResponsive from "./PictureResponsive.astro";
+import { BreakPoints } from "@/types/BreakPoints";
+
+interface Props {
+  className?: string;
+  useDarkMode?: boolean;
+}
+
+const { className = "", useDarkMode = false } = Astro.props as Props;
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+const currentPath = `/${pathSegments[pathSegments.length - 1] ?? ""}`;
+
+const navItems: NavbarItem[] = [
+  { name: "Inicio", href: "/" },
+  { name: "Nosotros", href: "/about" },
+  { name: "Con cada paso soy más yo", href: "/mensaje" },
+  {
+    name: "Contacto",
+    href: "/contact",
+    class:
+      "h-10 bg-mika-primary text-white hover:opacity-90 px-4 rounded xl:ml-40 flex items-center justify-center",
+  },
+];
+
+const baseClass = `
+  w-full flex justify-between items-center
+  h-[var(--h-navbar-mobile)] lg:h-[var(--h-navbar)]
+  px-5 xl:px-10 2xl:px-20
+  shadow-md
+`;
+const darkLogo = "/shared/logo-dark.webp";
+const logo = "/shared/logo.webp";
+const sources = useDarkMode ? [darkLogo, logo] : [logo];
+const breakpoints = useDarkMode ? [BreakPoints.LG] : [];
+---
+
+<nav class={`${baseClass} ${className}`}>
+  <a href="/" class="h-full">
+    <PictureResponsive
+      sources={sources}
+      breakpoints={breakpoints}
+      alt="Mika logo"
+      classPicture="flex items-center h-full"
+      classImage="w-auto h-[80%]"
+    />
+  </a>
+
+  <ul
+    class="hidden lg:flex space-x-10 text-gray-800 font-bold items-center text-nav-item"
+  >
+    {
+      navItems.map((item) => {
+        const isActive = currentPath === item.href;
+        const isCustom = !!item.class;
+        const baseClass = "relative transition-all duration-300 ml-5";
+
+        const notShowLine = isCustom && !isActive;
+        const hoverLineClass =
+          !notShowLine &&
+          `after:absolute after:left-0 after:h-[2px] after:bg-mika-primary after:transition-all after:duration-[400ms] ${isCustom ? "after:-bottom-1" : "after:bottom-0"}
+            ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full hover:animate-hover-scale"}`;
+
+        return (
+          <li>
+            <a
+              href={item.href}
+              class={`${baseClass} ${
+                isCustom
+                  ? `${item.class} ${hoverLineClass}`
+                  : `${isActive ? "text-mika-primary" : "hover:text-mika-primary"} ${hoverLineClass}`
+              }`}
+            >
+              {item.name.toLocaleUpperCase()}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <NavbarMobile
+    client:load
+    items={navItems}
+    currentPath={currentPath}
+    buttonClasses={`${useDarkMode ? "text-white" : "text-mika-primary"}`}
+  />
+</nav>

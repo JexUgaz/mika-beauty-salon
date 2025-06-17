@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import AboutSection from "@/components/sections/about/About.astro";
+import Navbar from "@/components/shared/Navbar.astro";
+---
+
+<Layout class="relative">
+  <Navbar className="bg-white" />
+  <main class="w-full lg:h-[calc(100vh-var(--h-navbar))] xl:min-h-auto">
+    <section
+      class="overflow-y-auto overflow-x-hidden flex flex-col-reverse justify-end items-center h-full
+    xl:flex-row xl:px-5 xl:justify-around
+    2xl:overflow-hidden 3xl:px-30"
+    >
+      <AboutSection />
+    </section>
+  </main>
+</Layout>

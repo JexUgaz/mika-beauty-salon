@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import type { BreakPoints } from "@/types/BreakPoints";
+
+interface Props {
+  src: ImageMetadata;
+  alt?: string;
+  widths: number[];
+  breakpoints?: BreakPoints[];
+  class?: string;
+}
+
+const {
+  src,
+  alt = "",
+  widths,
+  breakpoints = [],
+  class: customClass = "",
+} = Astro.props;
+
+if (!widths || widths.length === 0) {
+  throw new Error("The 'widths' array cannot be empty.");
+}
+
+if (widths.length > 1) {
+  if (!breakpoints || breakpoints.length !== widths.length - 1) {
+    throw new Error(
+      `The number of breakpoints should be ${widths.length - 1} for widths: [${widths.join(", ")}]`
+    );
+  }
+}
+
+let autoSizes: string;
+
+if (widths.length === 1) {
+  autoSizes = `${widths[0]}px`;
+} else {
+  const bpWidthPairs = breakpoints.map((bp, i) => ({
+    bp,
+    width: widths[i + 1],
+  }));
+
+  bpWidthPairs.sort((a, b) => b.bp - a.bp);
+
+  const parts = bpWidthPairs.map(
+    ({ bp, width }) => `(min-width: ${bp}px) ${width}px`
+  );
+
+  parts.push(`${widths[0]}px`);
+
+  autoSizes = parts.join(", ");
+}
+---
+
+<Image
+  src={src}
+  alt={alt}
+  format="webp"
+  widths={widths}
+  sizes={autoSizes}
+  class={`size-auto max-w-none ${customClass}`}
+/>

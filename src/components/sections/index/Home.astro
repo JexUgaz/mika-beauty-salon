@@ -1,0 +1,86 @@
+---
+import SpeakerButton from "@/components/client/SpeakerButton";
+import arrowIcon from "@/assets/images/shared/arrow-simple.webp";
+import tacosPhoto from "@/assets/images/home/tacos.webp";
+import ImageResponsive from "@/components/shared/ImageResponsive.astro";
+import { BreakPoints } from "@/types/BreakPoints";
+---
+
+<video
+  autoplay
+  muted
+  loop
+  playsinline
+  class="absolute top-0 left-0 object-cover object-[60%_center] xl:object-center z-0 w-full min-w-full min-h-full"
+>
+  <source src="/videos/background.webm" type="video/webm" />
+  Tu navegador no soporta video.
+</video>
+
+<div
+  class="relative z-10
+      flex flex-col items-center justify-center
+      h-full text-white text-center bg-black/20
+      xl:ps-[150px] xl:pt-[200px] xl:items-start xl:justify-start
+      2xl:ps-[250px] 2xl:pt-[200px]"
+>
+  <h1
+    class="text-4xl font-semibold mb-4 text-wrap break-words
+    max-w-4xl w-full px-5
+    lg:text-6xl xl:w-auto xl:px-0 2xl:text-8xl"
+  >
+    <p class="text-center xl:text-start">"CON CADA PASO SOY MÁS YO"</p>
+  </h1>
+  <a
+    href="/nosotros"
+    class="flex justify-center items-center rounded bg-mika-primary
+    text-white font-extrabold text-base px-5 h-12 mt-20 hover:opacity-90 transition
+    lg:h-15 lg:px-10 lg:text-xl
+    xl:px-20 xl:text-2xl xl:h-18 xl:mt-5"
+  >
+    <p>ÚNETE AL RETO</p>
+  </a>
+  <span class="relative mt-5 px-7
+    lg:mt-10 xl:px-0 xl:mt-15">
+    <p
+      class="text-lg max-w-xl text-center font-medium
+      lg:text-xl
+      xl:font-normal xl:text-2xl xl:text-justify"
+    >
+      Mika Beauty Salón busca empoderar a las mujeres a través del baile. La
+      mujer es fuerza, sabiduría y valentía. Su poder transforma vidas y cambia
+      el mundo.
+    </p>
+
+    <ImageResponsive
+      src={arrowIcon}
+      alt="Flecha"
+      widths={[40, 60]}
+      breakpoints={[BreakPoints.XL]}
+      class="absolute top-1/2 -translate-y-1/2 lg:-left-10 xl:-left-25 animate-pulse-scale hidden lg:block"
+    />
+  </span>
+  <div
+    class="animate-pulse-scale flex relative mt-20 size-40
+    xl:absolute xl:right-20 xl:top-60 xl:flex-col xl:items-end xl:mt-0 xl:size-auto
+    2xl:right-40"
+  >
+    <div
+      class="size-25 rounded-full bg-mika-primary
+    flex items-center justify-center text-white font-extrabold px-5 text-xs
+    absolute top-1/2 -translate-y-1/2 -left-4 -rotate-25 z-20
+    xl:static xl:rotate-0 xl:top-auto xl:left-auto xl:translate-0 xl:size-30 xl:text-sm"
+    >
+      SIENTE EL RITMO
+    </div>
+    <ImageResponsive
+      src={tacosPhoto}
+      widths={[130, 200, 300]}
+      alt="Tacos"
+      breakpoints={[BreakPoints.XL, BreakPoints["2XL"]]}
+      class="z-25 absolute -right-4 top-7 rotate-5 xl:static xl:me-15 xl:rotate-0 xl:top-auto xl:right-auto"
+    />
+  </div>
+
+  <SpeakerButton client:load />
+</div>
