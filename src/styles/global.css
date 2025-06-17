@@ -56,3 +56,5 @@
     font-family: Poppins, sans-serif;
   }
 }
+
+@custom-variant md-height (@media (min-height: 700px));

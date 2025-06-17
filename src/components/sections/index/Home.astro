@@ -19,54 +19,60 @@ import { BreakPoints } from "@/types/BreakPoints";
 
 <div
   class="relative z-10
-      flex flex-col items-center justify-center
-      h-full text-white text-center bg-black/20
-      xl:ps-[150px] xl:pt-[200px] xl:items-start xl:justify-start
-      2xl:ps-[250px] 2xl:pt-[200px]"
+      flex flex-col justify-start items-center
+      h-full text-white bg-black/20
+      xl:flex-row"
 >
-  <h1
-    class="text-4xl font-semibold mb-4 text-wrap break-words
-    max-w-4xl w-full px-5
-    lg:text-6xl xl:w-auto xl:px-0 2xl:text-8xl"
-  >
-    <p class="text-center xl:text-start">"CON CADA PASO SOY MÁS YO"</p>
-  </h1>
-  <a
-    href="/nosotros"
-    class="flex justify-center items-center rounded bg-mika-primary
-    text-white font-extrabold text-base px-5 h-12 mt-20 hover:opacity-90 transition
-    lg:h-15 lg:px-10 lg:text-xl
-    xl:px-20 xl:text-2xl xl:h-18 xl:mt-5"
-  >
-    <p>ÚNETE AL RETO</p>
-  </a>
-  <span class="relative mt-5 px-7
-    lg:mt-10 xl:px-0 xl:mt-15">
-    <p
-      class="text-lg max-w-xl text-center font-medium
-      lg:text-xl
-      xl:font-normal xl:text-2xl xl:text-justify"
-    >
-      Mika Beauty Salón busca empoderar a las mujeres a través del baile. La
-      mujer es fuerza, sabiduría y valentía. Su poder transforma vidas y cambia
-      el mundo.
-    </p>
-
-    <ImageResponsive
-      src={arrowIcon}
-      alt="Flecha"
-      widths={[40, 60]}
-      breakpoints={[BreakPoints.XL]}
-      class="absolute top-1/2 -translate-y-1/2 lg:-left-10 xl:-left-25 animate-pulse-scale hidden lg:block"
-    />
-  </span>
   <div
-    class="animate-pulse-scale flex relative mt-20 size-40
+    class="relative flex flex-col items-center mt-[20vh]
+      xl:ps-[18vh] xl:w-[60%] xl:items-start xl:mt-0
+       2xl:ps-[20vh] 3xl:-translate-y-5"
+  >
+    <h1
+      class="font-semibold mb-4 text-wrap break-words
+    max-w-4xl w-full px-5 text-center text-2xl sm:text-4xl
+    lg:text-5xl xl:text-start xl:w-auto xl:px-0
+    3xl:text-7xl"
+    >
+      "CON CADA PASO SOY MÁS YO"
+    </h1>
+    <a
+      href="#"
+      class="flex justify-center items-center rounded bg-mika-primary
+      px-5 h-12 mt-10 hover:opacity-90 transition w-fit
+      lg:h-12 lg:px-10 xl:h-14 xl:px-15 xl:mt-5 2xl:h-17 2xl:px-20"
+    >
+      <p class="text-base font-extrabold text-white xl:text-xl 2xl:text-2xl">
+        ÚNETE AL RETO
+      </p>
+    </a>
+    <span class="relative mt-5 px-7
+    lg:mt-10 xl:px-0 xl:mt-15">
+      <p
+        class="text-lg max-w-xl text-center font-medium
+      xl:text-2xl xl:text-justify"
+      >
+        Mika Beauty Salón busca empoderar a las mujeres a través del baile. La
+        mujer es fuerza, sabiduría y valentía. Su poder transforma vidas y
+        cambia el mundo.
+      </p>
+
+      <ImageResponsive
+        src={arrowIcon}
+        alt="Flecha"
+        widths={[40, 60]}
+        breakpoints={[BreakPoints.XL]}
+        class="absolute top-1/2 -translate-y-1/2 lg:-left-10 xl:-left-25 animate-pulse-scale hidden lg:block"
+      />
+    </span>
+  </div>
+  <div
+    class="animate-pulse-scale flex relative mt-5 md-height:mt-[15vh] size-40
     xl:absolute xl:right-20 xl:top-60 xl:flex-col xl:items-end xl:mt-0 xl:size-auto
     2xl:right-40"
   >
     <div
-      class="size-25 rounded-full bg-mika-primary
+      class="size-25 rounded-full bg-mika-primary text-center
     flex items-center justify-center text-white font-extrabold px-5 text-xs
     absolute top-1/2 -translate-y-1/2 -left-4 -rotate-25 z-20
     xl:static xl:rotate-0 xl:top-auto xl:left-auto xl:translate-0 xl:size-30 xl:text-sm"
@@ -75,9 +81,9 @@ import { BreakPoints } from "@/types/BreakPoints";
     </div>
     <ImageResponsive
       src={tacosPhoto}
-      widths={[130, 200, 300]}
+      widths={[130, 200, 250, 300]}
       alt="Tacos"
-      breakpoints={[BreakPoints.XL, BreakPoints["2XL"]]}
+      breakpoints={[BreakPoints.XL, BreakPoints["2XL"], BreakPoints["3XL"]]}
       class="z-25 absolute -right-4 top-7 rotate-5 xl:static xl:me-15 xl:rotate-0 xl:top-auto xl:right-auto"
     />
   </div>

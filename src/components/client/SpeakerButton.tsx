@@ -42,7 +42,7 @@ export default function SpeakerButton() {
     <button
       onClick={toggleMute}
       className="mt-0 p-2 rounded-full hover:scale-110 transition-transform cursor-pointer 
-      absolute bottom-5 right-5 xl:bottom-40 xl:right-40"
+      absolute bottom-5 right-5 xl:bottom-10 xl:right-10"
     >
       {muted ? (
         <SpeakerOffFillIcon className="size-8" />
