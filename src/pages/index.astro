@@ -1,12 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Home from "@/components/sections/index/Home.astro";
-import Navbar from "@/components/shared/Navbar.astro";
+import Navbar from "@/components/shared/navbar/Navbar.astro";
 ---
 
 <Layout>
   <Navbar
-    className="fixed top-0 left-0 z-50 bg-transparent backdrop-blur-md lg:static lg:bg-white"
+    className="fixed top-0 left-0 z-50 bg-transparent backdrop-blur-md lg:backdrop-blur-none  lg:static lg:bg-white"
     useDarkMode={true}
   />
   <main class="w-full h-screen lg:h-[calc(100vh-var(--h-navbar))]">

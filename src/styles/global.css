@@ -3,6 +3,9 @@
 @theme static {
   --breakpoint-xs: 30rem;
   --breakpoint-3xl: 106.25rem;
+  --breakpoint-2md: 56rem;
+
+  --md-height: 43.75rem;
 
   --color-mika-primary: #d2122a;
   --color-white: #fafafa;
@@ -57,4 +60,4 @@
   }
 }
 
-@custom-variant md-height (@media (min-height: 700px));
+@custom-variant md-height (@media (min-height: 43.75rem));

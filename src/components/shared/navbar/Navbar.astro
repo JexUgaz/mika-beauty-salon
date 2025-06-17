@@ -1,8 +1,10 @@
 ---
 import type { NavbarItem } from "@/types/NavbarItem";
 import NavbarMobile from "@/components/client/NavbarMobile";
-import PictureResponsive from "./PictureResponsive.astro";
+import PictureResponsive from "@/components/shared/PictureResponsive.astro";
 import { BreakPoints } from "@/types/BreakPoints";
+import NavbarDesktop from "./NavbarDesktop.astro";
+import ContactNavItem from "./ContactNavItem.astro";
 
 interface Props {
   className?: string;
@@ -16,12 +18,19 @@ const currentPath = `/${pathSegments[pathSegments.length - 1] ?? ""}`;
 const navItems: NavbarItem[] = [
   { name: "Inicio", href: "/" },
   { name: "Nosotros", href: "/about" },
-  { name: "Con cada paso soy más yo", href: "/mensaje" },
+  {
+    name: "Con cada paso soy más yo",
+    children: [
+      { name: "Mini Documental", href: "/mensaje/parte1" },
+      { name: "Testimonios", href: "/mensaje/parte2" },
+      { name: "Siente el ritmo", href: "/mensaje/parte2" },
+      { name: "Únete al reto", href: "/mensaje/parte2" },
+    ],
+  },
   {
     name: "Contacto",
     href: "/contact",
-    class:
-      "h-10 bg-mika-primary text-white hover:opacity-90 px-4 rounded xl:ml-40 flex items-center justify-center",
+    component: ContactNavItem,
   },
 ];
 
@@ -48,38 +57,7 @@ const breakpoints = useDarkMode ? [BreakPoints.LG] : [];
     />
   </a>
 
-  <ul
-    class="hidden lg:flex space-x-10 text-gray-800 font-bold items-center text-nav-item"
-  >
-    {
-      navItems.map((item) => {
-        const isActive = currentPath === item.href;
-        const isCustom = !!item.class;
-        const baseClass = "relative transition-all duration-300 ml-5";
-
-        const notShowLine = isCustom && !isActive;
-        const hoverLineClass =
-          !notShowLine &&
-          `after:absolute after:left-0 after:h-[2px] after:bg-mika-primary after:transition-all after:duration-[400ms] ${isCustom ? "after:-bottom-1" : "after:bottom-0"}
-            ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full hover:animate-hover-scale"}`;
-
-        return (
-          <li>
-            <a
-              href={item.href}
-              class={`${baseClass} ${
-                isCustom
-                  ? `${item.class} ${hoverLineClass}`
-                  : `${isActive ? "text-mika-primary" : "hover:text-mika-primary"} ${hoverLineClass}`
-              }`}
-            >
-              {item.name.toLocaleUpperCase()}
-            </a>
-          </li>
-        );
-      })
-    }
-  </ul>
+  <NavbarDesktop navItems={navItems} currentPath={currentPath} />
 
   <NavbarMobile
     client:load

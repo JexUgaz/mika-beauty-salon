@@ -1,0 +1,33 @@
+---
+import type { NavbarItem } from "@/types/NavbarItem";
+import ContactNavItem from "./ContactNavItem.astro";
+import NavItem from "./NavItem.astro";
+
+interface Props {
+  navItems: NavbarItem[];
+  currentPath: string;
+}
+
+const { navItems, currentPath } = Astro.props;
+---
+
+<ul
+  class="hidden lg:flex space-x-10 text-gray-800 font-bold items-center text-nav-item"
+>
+  {
+    navItems.map((item) => {
+      const isActive = currentPath === item.href;
+      if (item.component === ContactNavItem) {
+        return (
+          <ContactNavItem
+            isActive={isActive}
+            href={item.href!}
+            name={item.name}
+          />
+        );
+      }
+
+      return <NavItem item={item} isActive={isActive} />;
+    })
+  }
+</ul>

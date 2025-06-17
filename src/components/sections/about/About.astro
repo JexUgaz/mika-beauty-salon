@@ -17,15 +17,9 @@ const imagesCarousel = Array.from({ length: 6 }, (_, i) => i + 1);
 
 <ImageResponsive
   src={tacoImage}
-  widths={[140, 180, 200, 250, 300, 400]}
-  breakpoints={[
-    BreakPoints.XS,
-    BreakPoints.SM,
-    BreakPoints.MD,
-    BreakPoints.LG,
-    BreakPoints["3XL"],
-  ]}
-  class="absolute bottom-0 right-0 z-10"
+  widths={[150, 200, 250]}
+  breakpoints={[BreakPoints.MD, BreakPoints["2MD"]]}
+  class="absolute bottom-0 right-0 z-10 hidden sm:block"
 />
 
 <Carousel
@@ -38,8 +32,7 @@ const imagesCarousel = Array.from({ length: 6 }, (_, i) => i + 1);
 <div
   class="z-1 pt-5 px-5
     xs:px-10 sm:px-20 lg:px-45
-    xs:pt-10
-    xl:py-30 xl:max-w-2xl xl:px-0 xl:h-full"
+    xl:max-w-2xl xl:px-0 xl:h-full 3xl:pt-30"
 >
   <div class="flex items-center justify-start -translate-x-3">
     <ArrowBoxed class="size-13 xl:size-20" />

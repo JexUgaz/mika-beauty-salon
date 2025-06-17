@@ -1,0 +1,20 @@
+---
+interface Props {
+  isActive: boolean;
+  name: string;
+  href: string;
+}
+
+const { isActive, name, href } = Astro.props;
+
+const baseClass =
+  "relative transition-all duration-300 ml-5 h-10 bg-mika-primary text-white hover:opacity-90 px-4 rounded xl:ml-40 flex items-center justify-center";
+const hoverLineClass =
+  "after:absolute after:left-0 after:h-[2px] after:bg-mika-primary after:transition-all after:duration-[400ms] after:-bottom-1 after:w-full";
+---
+
+<li>
+  <a href={href} class={`${baseClass} ${isActive ? hoverLineClass : ""}`}>
+    {name.toLocaleUpperCase()}
+  </a>
+</li>

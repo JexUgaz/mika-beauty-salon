@@ -1,0 +1,35 @@
+---
+import type { NavbarItem } from "@/types/NavbarItem";
+import NavChildren from "./NavChildren.astro";
+
+interface Props {
+  item: NavbarItem;
+  isActive: boolean;
+}
+
+const { item, isActive } = Astro.props;
+
+const baseClass = "relative transition-all duration-300 ml-5";
+const hasChildren = !!item.children;
+
+const hoverLineClass = `after:absolute after:left-0 after:h-[2px] after:bg-mika-primary after:transition-all after:duration-[400ms] after:bottom-0
+  ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full hover:animate-hover-scale"}`;
+---
+
+<li class="relative group" onclick="this.classList.toggle('open')">
+  <a
+    href={hasChildren ? "#" : item.href}
+    class={`${baseClass} inline-flex items-center ${isActive ? "text-mika-primary" : "hover:text-mika-primary"} ${hoverLineClass}`}
+  >
+    {item.name.toLocaleUpperCase()}
+    {
+      hasChildren && (
+        <span class="transition-transform duration-300 group-hover:-rotate-90 text-4xl">
+          ▾
+        </span>
+      )
+    }
+  </a>
+  <div class="absolute left-0 top-full h-6 w-full group-hover:block"></div>
+  {hasChildren && <NavChildren children={item.children!} />}
+</li>

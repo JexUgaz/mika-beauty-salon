@@ -16,7 +16,7 @@ import { BreakPoints } from "@/types/BreakPoints";
 
 <div
   class="relative bg-mika-primary shadow-lg rounded-t-4xl p-6 w-full max-w-3xl text-white
-  h-80 lg:h-90"
+  h-80 mt-25 md-height:mt-0 lg:h-90"
 >
   <h2
     class="font-extrabold text-center mb-4 underline mt-10
@@ -49,9 +49,9 @@ import { BreakPoints } from "@/types/BreakPoints";
 
   <ImageResponsive
     src={tacoImage}
-    widths={[210, 250, 300]}
-    breakpoints={[BreakPoints.SM, BreakPoints.LG]}
-    class="animate-shoe-shake absolute top-0 left-1/2 -translate-x-1/2 -translate-y-25 sm:-translate-y-32 lg:-translate-y-40"
+    widths={[170, 210, 250, 300]}
+    breakpoints={[BreakPoints.XS, BreakPoints.SM, BreakPoints["3XL"]]}
+    class="animate-shoe-shake absolute top-0 left-1/2 -translate-x-1/2 -translate-y-18 xs:-translate-y-25 sm:-translate-y-28 3xl:-translate-y-40"
   />
 </div>
 

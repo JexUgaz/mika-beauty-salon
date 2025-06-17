@@ -1,0 +1,45 @@
+---
+import type { NavbarItem } from "@/types/NavbarItem";
+
+interface Props {
+  children: NavbarItem[];
+}
+
+const { children } = Astro.props;
+---
+
+<ul
+  class="absolute left-0 top-full mt-2 bg-white shadow-xl rounded-lg py-2 w-full
+      px-2 divide-y divide-gray-200
+      opacity-0 invisible translate-y-3 pointer-events-none
+      group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto
+      group-[.open]:opacity-100 group-[.open]:visible group-[.open]:translate-y-0 group-[.open]:pointer-events-auto
+      transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-50"
+>
+  {
+    children.map((child) => (
+      <li>
+        <a
+          href={child.href}
+          class="flex items-center gap-2 px-4 py-2 text-xl text-gray-800 hover:bg-gray-100 hover:rounded-md hover:text-mika-primary transition-all duration-200"
+        >
+          <svg
+            class="w-4 h-4  transform transition-transform duration-200 group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+          {child.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>

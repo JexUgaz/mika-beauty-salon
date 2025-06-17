@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import AboutSection from "@/components/sections/about/About.astro";
-import Navbar from "@/components/shared/Navbar.astro";
+import Navbar from "@/components/shared/navbar/Navbar.astro";
 ---
 
 <Layout class="relative">
@@ -9,7 +9,7 @@ import Navbar from "@/components/shared/Navbar.astro";
   <main class="w-full lg:h-[calc(100vh-var(--h-navbar))] xl:min-h-auto">
     <section
       class="overflow-y-auto overflow-x-hidden flex flex-col-reverse justify-end items-center h-full
-    xl:flex-row xl:px-5 xl:justify-around
+    xl:flex-row xl:px-5 xl:justify-center xl:gap-x-30 3xl:gap-x-50
     2xl:overflow-hidden 3xl:px-30"
     >
       <AboutSection />
