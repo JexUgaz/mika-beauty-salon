@@ -1,0 +1,44 @@
+---
+import JoinTheChallengeForm from "@/components/client/join-the-challenge/JoinTheChallengeForm";
+import PictureResponsive from "@/components/shared/PictureResponsive.astro";
+import { BreakPoints } from "@/types/BreakPoints";
+import ImageResponsive from "@/components/shared/ImageResponsive.astro";
+import checkImage from "@/assets/images/join-the-challenge/check.png";
+import chipsImage from "@/assets/images/join-the-challenge/chips.png";
+---
+
+<PictureResponsive
+  sources={["/about/background-vertical.webp", "/about/background.webp"]}
+  breakpoints={[BreakPoints.XL]}
+  classPicture="absolute top-0 left-0 -z-200 min-w-full min-h-screen h-full w-full"
+  classImage="min-w-full min-h-screen object-cover h-full w-full"
+/>
+
+<JoinTheChallengeForm client:load>
+  <div
+    id="success-message"
+    class="relative h-full max-w-4xl flex flex-col justify-center items-center -translate-y-20 px-5"
+  >
+    <ImageResponsive
+      src={checkImage}
+      widths={[100, 150]}
+      breakpoints={[BreakPoints.MD]}
+    />
+    <h1
+      class="text-2xl font-extrabold text-mika-primary text-center
+    sm:text-3xl md:text-4xl"
+    >
+      “¡Formulario enviado con éxito! Gracias por dar tu primer paso.”
+    </h1>
+    <ImageResponsive
+      src={chipsImage}
+      widths={[150]}
+      class="absolute -left-40 top-1/2 -translate-y-5 hidden xl:block"
+    />
+    <ImageResponsive
+      src={chipsImage}
+      widths={[150]}
+      class="absolute -right-40 top-1/2 -translate-y-5 hidden xl:block"
+    />
+  </div>
+</JoinTheChallengeForm>

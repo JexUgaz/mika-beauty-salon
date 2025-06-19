@@ -1,13 +1,15 @@
 ---
 import type { NavbarItem } from "@/types/NavbarItem";
 import NavChildren from "./NavChildren.astro";
+import ArrowDownIcon from "@/components/icons/ArrowDownIcon.astro";
 
 interface Props {
   item: NavbarItem;
   isActive: boolean;
+  currentPath: string;
 }
 
-const { item, isActive } = Astro.props;
+const { item, isActive, currentPath } = Astro.props;
 
 const baseClass = "relative transition-all duration-300 ml-5";
 const hasChildren = !!item.children;
@@ -24,12 +26,14 @@ const hoverLineClass = `after:absolute after:left-0 after:h-[2px] after:bg-mika-
     {item.name.toLocaleUpperCase()}
     {
       hasChildren && (
-        <span class="transition-transform duration-300 group-hover:-rotate-90 text-4xl">
-          ▾
-        </span>
+        <ArrowDownIcon class="transition-transform duration-300 group-hover:-rotate-90 group-[.open]:-rotate-90 size-5 ms-2" />
       )
     }
   </a>
   <div class="absolute left-0 top-full h-6 w-full group-hover:block"></div>
-  {hasChildren && <NavChildren children={item.children!} />}
+  {
+    hasChildren && (
+      <NavChildren children={item.children!} currentPath={currentPath} />
+    )
+  }
 </li>

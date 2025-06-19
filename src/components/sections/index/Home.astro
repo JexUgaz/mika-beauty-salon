@@ -17,7 +17,7 @@ import { BreakPoints } from "@/types/BreakPoints";
   Tu navegador no soporta video.
 </video>
 <div
-  class="relative -z-100
+  class="relative
       flex flex-col justify-start items-center
       h-full text-white bg-black/20
       xl:flex-row"
@@ -36,8 +36,8 @@ import { BreakPoints } from "@/types/BreakPoints";
       "CON CADA PASO SOY MÁS YO"
     </h1>
     <a
-      href="#"
-      class="flex justify-center items-center rounded bg-mika-primary
+      href="/becoming-more-myself/join-the-challenge"
+      class="flex justify-center items-center rounded bg-mika-primary cursor-pointer
       px-5 h-12 mt-10 hover:opacity-90 transition w-fit
       lg:h-12 lg:px-10 xl:h-14 xl:px-15 xl:mt-5 2xl:h-17 2xl:px-20"
     >
@@ -65,8 +65,9 @@ import { BreakPoints } from "@/types/BreakPoints";
       />
     </span>
   </div>
-  <div
-    class="animate-pulse-scale flex relative mt-5 md-height:mt-[50px] size-40
+  <a
+    href="/becoming-more-myself/feel-the-rhythm"
+    class="animate-pulse-scale flex relative mt-5 md-height:mt-[50px] size-40 cursor-pointer
     xl:absolute xl:right-20 xl:top-60 xl:flex-col xl:items-end xl:mt-0 xl:size-auto
     2xl:right-40"
   >
@@ -90,7 +91,7 @@ import { BreakPoints } from "@/types/BreakPoints";
       ]}
       class="z-25 absolute -right-4 top-7 rotate-5 xl:static xl:me-15 xl:rotate-0 xl:top-auto xl:right-auto"
     />
-  </div>
+  </a>
 
   <SpeakerButton client:load />
 </div>

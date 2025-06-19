@@ -1,11 +1,13 @@
 ---
+import ArrowDownIcon from "@/components/icons/ArrowDownIcon.astro";
 import type { NavbarItem } from "@/types/NavbarItem";
 
 interface Props {
   children: NavbarItem[];
+  currentPath: string;
 }
 
-const { children } = Astro.props;
+const { children, currentPath } = Astro.props;
 ---
 
 <ul
@@ -17,29 +19,32 @@ const { children } = Astro.props;
       transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-50"
 >
   {
-    children.map((child) => (
-      <li>
-        <a
-          href={child.href}
-          class="flex items-center gap-2 px-4 py-2 text-xl text-gray-800 hover:bg-gray-100 hover:rounded-md hover:text-mika-primary transition-all duration-200"
-        >
-          <svg
-            class="w-4 h-4  transform transition-transform duration-200 group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+    children.map((child) => {
+      const isActive = currentPath === child.href;
+
+      const linkBaseClasses =
+        "flex items-center gap-2 px-4 py-2 text-lg transition-all duration-200 hover:bg-gray-100 hover:rounded-md";
+      const linkActiveClasses = "text-mika-primary font-semibold";
+      const linkInactiveClasses = "text-gray-800 hover:text-mika-primary";
+
+      const iconBaseClasses =
+        "size-3 transform transition-transform duration-200 rotate-270";
+      const iconActiveClasses = "translate-x-1 text-mika-primary";
+      const iconInactiveClasses = "group-hover:translate-x-1";
+
+      return (
+        <li>
+          <a
+            href={child.href}
+            class={`${linkBaseClasses} ${isActive ? linkActiveClasses : linkInactiveClasses}`}
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M9 5l7 7-7 7"
+            <ArrowDownIcon
+              class={`${iconBaseClasses} ${isActive ? iconActiveClasses : iconInactiveClasses}`}
             />
-          </svg>
-          {child.name}
-        </a>
-      </li>
-    ))
+            {child.name}
+          </a>
+        </li>
+      );
+    })
   }
 </ul>

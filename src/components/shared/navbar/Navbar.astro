@@ -1,19 +1,18 @@
 ---
 import type { NavbarItem } from "@/types/NavbarItem";
-import NavbarMobile from "@/components/client/NavbarMobile";
 import PictureResponsive from "@/components/shared/PictureResponsive.astro";
 import { BreakPoints } from "@/types/BreakPoints";
 import NavbarDesktop from "./NavbarDesktop.astro";
 import ContactNavItem from "./ContactNavItem.astro";
+import NavbarMobile from "@/components/client/navbar/NavbarMobile";
 
 interface Props {
   className?: string;
   useDarkMode?: boolean;
 }
 
-const { className = "", useDarkMode = false } = Astro.props as Props;
-const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
-const currentPath = `/${pathSegments[pathSegments.length - 1] ?? ""}`;
+const { className = "", useDarkMode = false } = Astro.props;
+const currentPath = Astro.url.pathname;
 
 const navItems: NavbarItem[] = [
   { name: "Inicio", href: "/" },
@@ -21,10 +20,19 @@ const navItems: NavbarItem[] = [
   {
     name: "Con cada paso soy más yo",
     children: [
-      { name: "Mini Documental", href: "/mensaje/parte1" },
-      { name: "Testimonios", href: "/mensaje/parte2" },
-      { name: "Siente el ritmo", href: "/mensaje/parte2" },
-      { name: "Únete al reto", href: "/mensaje/parte2" },
+      {
+        name: "Mini Documental",
+        href: "/becoming-more-myself/mini-documentary",
+      },
+      { name: "Testimonios", href: "/becoming-more-myself/testimonials" },
+      {
+        name: "Siente el ritmo",
+        href: "/becoming-more-myself/feel-the-rhythm",
+      },
+      {
+        name: "Únete al reto",
+        href: "/becoming-more-myself/join-the-challenge",
+      },
     ],
   },
   {

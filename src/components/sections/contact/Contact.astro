@@ -8,7 +8,7 @@ import { BreakPoints } from "@/types/BreakPoints";
 ---
 
 <PictureResponsive
-  sources={["/about/background-vertical.jpg", "/about/background.webp"]}
+  sources={["/about/background-vertical.webp", "/about/background.webp"]}
   breakpoints={[BreakPoints.XL]}
   classPicture="absolute top-0 left-0 -z-200 h-full w-full"
   classImage="object-cover h-full w-full"
@@ -29,21 +29,30 @@ import { BreakPoints } from "@/types/BreakPoints";
       class="grid grid-cols-[60px_1fr_1fr] items-center justify-items-center gap-y-4 gap-x-2
         lg:gap-y-8 lg:gap-x-6"
     >
-      <WhatsappIcon class="text-white size-8 lg:size-10" />
-      <p
-        class="font-semibold col-span-2 justify-self-start
-        text-xl sm:text-2xl lg:text-3xl"
+      <a href="https://wa.link/q69cwb" target="_blank"
+        ><WhatsappIcon class="text-white size-8 lg:size-10" /></a
       >
-        +51 914 044 450
-      </p>
+      <a
+        class="col-span-2 justify-self-start"
+        href="https://wa.link/q69cwb"
+        target="_blank"
+      >
+        <p class="font-semibold text-xl sm:text-2xl lg:text-3xl">
+          +51 914 044 450
+        </p></a
+      >
 
-      <InstagramIcon class="text-white size-11 lg:size-15" />
-      <p
-        class="font-semibold col-span-2 justify-self-start
-          text-xl sm:text-2xl lg:text-3xl"
+      <a href="https://www.instagram.com/mika.beautysalon/" target="_blank"
+        ><InstagramIcon class="text-white size-11 lg:size-15" /></a
       >
-        @mika.beautysalon
-      </p>
+      <a
+        class="col-span-2 justify-self-start"
+        href="https://www.instagram.com/mika.beautysalon/"
+        target="_blank"
+        ><p class="font-semibold text-xl sm:text-2xl lg:text-3xl">
+          @mika.beautysalon
+        </p>
+      </a>
     </div>
   </div>
 

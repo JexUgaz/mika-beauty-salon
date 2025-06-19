@@ -22,12 +22,7 @@ const {
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <link
-      rel="icon"
-      href="/images/favicon.svg"
-      type="image/svg+xml"
-      sizes="any"
-    />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -38,7 +33,7 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_PE" />
   </head>
-  <body class={`min-h-screen min-w-screen antialiased ${bodyClass}`}>
+  <body class={`min-h-screen min-w-screen antialiased ${bodyClass} `}>
     <slot />
   </body>
 </html>

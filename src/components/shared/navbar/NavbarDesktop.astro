@@ -16,7 +16,12 @@ const { navItems, currentPath } = Astro.props;
 >
   {
     navItems.map((item) => {
-      const isActive = currentPath === item.href;
+      const isDirectMatch = item.href === currentPath;
+      const isChildMatch = !!item.children?.some(
+        (child) => child.href === currentPath
+      );
+      const isActive = isDirectMatch || isChildMatch;
+
       if (item.component === ContactNavItem) {
         return (
           <ContactNavItem
@@ -27,7 +32,9 @@ const { navItems, currentPath } = Astro.props;
         );
       }
 
-      return <NavItem item={item} isActive={isActive} />;
+      return (
+        <NavItem item={item} isActive={isActive} currentPath={currentPath} />
+      );
     })
   }
 </ul>
