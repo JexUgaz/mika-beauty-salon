@@ -1,0 +1,37 @@
+---
+import PictureResponsive from "@/components/shared/PictureResponsive.astro";
+import { BreakPoints } from "@/types/BreakPoints";
+---
+
+<PictureResponsive
+  sources={["/backgrounds/red-bg-vertical.webp", "/backgrounds/red-bg.webp"]}
+  breakpoints={[BreakPoints.XL]}
+  classPicture="absolute top-0 left-0 -z-200 min-w-full min-h-screen h-full w-full"
+  classImage="min-w-full min-h-screen object-cover h-full w-full"
+/>
+
+<div class="h-full flex flex-col justify-center items-center">
+  <div
+    class="w-[95%] max-w-[800px] md-height:max-w-max md:w-[80%] lg:w-[70%] 2xl:w-[50%]"
+  >
+    <video
+      autoplay
+      controls
+      controlslist="nodownload"
+      oncontextmenu="return false;"
+      class="w-full h-full object-contain object-center"
+    >
+      <source src="/videos/mini-documentary.webm" type="video/webm" />
+      Tu navegador no soporta video.
+    </video>
+  </div>
+
+  <p
+    class="font-bold italic text-white mt-10 text-lg w-[98%] text-center text-pretty
+    md:w-[90%] md:text-xl lg:w-[80%] lg:text-2xl 2xl:w-[60%] 2xl:text-3xl"
+  >
+    “A través del movimiento, ellas comparten lo que esta experiencia significó
+    en sus vidas. No fue solo una clase: fue un paso hacia la libertad, la
+    valentía y la sanación”
+  </p>
+</div>

@@ -38,9 +38,9 @@ M425.000000,264.500000
 z"
     ></path>
     <path
-      fill="#D2132A"
+      fill="currentColor"
       opacity="1.000000"
-      stroke="none"
+      stroke="currentColor"
       d="
 M424.750000,264.750000 
 	C387.846771,301.649414 351.217957,338.323456 314.460327,374.867950 

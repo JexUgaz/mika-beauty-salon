@@ -1,11 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/shared/navbar/Navbar.astro";
+import MiniDocumentarySection from "@/components/sections/becoming-more-myself/mini-documentary/MiniDocumentary.astro";
 ---
 
 <Layout class="relative">
   <Navbar className="bg-white" />
-  <main class="w-full lg:h-[calc(100vh-var(--h-navbar))] xl:min-h-auto">
-    <section></section>
+  <main
+    class="w-full h-[calc(100vh-var(--h-navbar-mobile))] xl:h-[calc(100vh-var(--h-navbar))]"
+  >
+    <section class="h-full w-full flex justify-center items-center">
+      <MiniDocumentarySection />
+    </section>
   </main>
 </Layout>

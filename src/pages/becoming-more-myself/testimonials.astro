@@ -1,11 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/shared/navbar/Navbar.astro";
+import TestimonialsSection from "@/components/sections/becoming-more-myself/testimonials/Testimonials.astro";
 ---
 
 <Layout class="relative">
   <Navbar className="bg-white" />
-  <main class="w-full lg:h-[calc(100vh-var(--h-navbar))] xl:min-h-auto">
-    <section></section>
+  <main
+    class="w-full h-[calc(100vh-var(--h-navbar-mobile))] xl:h-[calc(100vh-var(--h-navbar))] overflow-hidden"
+  >
+    <section class="h-full w-full flex justify-center items-center">
+      <TestimonialsSection />
+    </section>
   </main>
 </Layout>

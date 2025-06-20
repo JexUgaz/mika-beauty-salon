@@ -1,12 +1,22 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import ArrowIcon from "./icons/ArrowIcon";
+import type { SwiperModule } from "swiper/types";
+import type { BreakPoints } from "@/types/BreakPoints";
 
 interface Props {
-  images: string[];
+  spaceBetween?: number;
+  autoplay?: boolean;
+  loop?: boolean;
+  length: number;
+  responsiveBreakpoints?: BreakPoints[];
+  responsiveViews?: number[];
+  builder: (index: number) => React.ReactNode;
+  showArrowsPerBreakpoint?: (breakpoint: number) => boolean;
+  autoplayPerBreakpoint?: (breakpoint: number) => boolean;
   className?: string;
   autoplayDelay?: number;
   showArrows?: boolean;
@@ -14,45 +24,91 @@ interface Props {
   nextButtonClass?: string;
 }
 
+const buildSwiperBreakpoints = (
+  bps: number[],
+  views: number[]
+): Record<number, { slidesPerView: number }> => {
+  if (views.length !== bps.length + 1) {
+    throw new Error(
+      `[Carousel] The number of slidesPerView values must be exactly one more than the number of breakpoints.\n` +
+        `Received: breakpoints(${bps.length}) -> slidesPerView(${views.length})`
+    );
+  }
+
+  const breakpoints: Record<number, { slidesPerView: number }> = {
+    0: { slidesPerView: views[0] },
+  };
+  bps.forEach((bp, i) => {
+    breakpoints[bp] = { slidesPerView: views[i + 1] };
+  });
+  return breakpoints;
+};
+
 const Carousel: React.FC<Props> = ({
-  images,
+  length,
+  builder,
+  spaceBetween = 20,
+  responsiveBreakpoints = [],
+  responsiveViews = [1],
+  loop = true,
+  autoplay = false,
   className = "w-[550px] h-[600px]",
   autoplayDelay = 3000,
-  showArrows = true,
+  showArrows = false,
   prevButtonClass = "-left-20",
   nextButtonClass = "-right-20",
+  showArrowsPerBreakpoint,
+  autoplayPerBreakpoint,
 }) => {
+  const [showArrowsByBreakpoint, setShowArrowsByBreakpoint] =
+    useState(showArrows);
+  const [autoplayByBreakpoint, setAutoplayByBreakpoint] = useState(autoplay);
   const swiperRef = useRef<SwiperClass | null>(null);
   const handleNext = () => swiperRef.current?.slideNext();
   const handlePrev = () => swiperRef.current?.slidePrev();
 
+  const modules: SwiperModule[] = [];
+  if (autoplayByBreakpoint) modules.push(Autoplay);
+
+  const breakpoints = buildSwiperBreakpoints(
+    responsiveBreakpoints,
+    responsiveViews
+  );
+
   return (
     <div className={`relative ${className}`}>
       <Swiper
-        spaceBetween={20}
-        modules={[Autoplay]}
-        slidesPerView={1}
-        loop={true}
+        key={`carousel-${autoplayByBreakpoint}`}
+        spaceBetween={spaceBetween}
+        modules={modules}
+        breakpoints={breakpoints}
+        loop={loop}
         autoplay={{
           delay: autoplayDelay,
           disableOnInteraction: false,
         }}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        className="rounded-lg w-full h-full"
+        onBreakpoint={(swiper, _) => {
+          const breakPoint = Number(swiper.currentBreakpoint);
+          if (showArrowsPerBreakpoint) {
+            setShowArrowsByBreakpoint(showArrowsPerBreakpoint(breakPoint));
+          }
+          if (autoplayPerBreakpoint) {
+            setAutoplayByBreakpoint(autoplayPerBreakpoint(breakPoint));
+          }
         }}
-        className="rounded-lg shadow-md w-full h-full"
       >
-        {images.map((i) => (
-          <SwiperSlide key={i} className="w-full h-full">
-            <img
-              src={i}
-              alt={`Slide ${i}`}
-              className="w-full h-full object-cover rounded-lg"
-            />
+        {Array.from({ length }).map((_, i) => (
+          <SwiperSlide
+            key={`slide-${i}`}
+            className="w-full h-full flex content-center"
+          >
+            {builder(i)}
           </SwiperSlide>
         ))}
       </Swiper>
-      {showArrows && (
+      {showArrowsByBreakpoint && (
         <>
           <button
             onClick={handlePrev}

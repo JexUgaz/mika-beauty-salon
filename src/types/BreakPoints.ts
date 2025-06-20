@@ -1,4 +1,5 @@
 export enum BreakPoints {
+  ZERO = 0,
   XS = 480,
   SM = 640,
   MD = 768,

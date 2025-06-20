@@ -21,11 +21,11 @@ const Form: React.FC<Props> = ({ handleSubmit }) => (
     2xl:px-10 2xl:pt-13 2xl:pb-20"
       >
         <div
-          className="self-start mb-5 -translate-x-1 flex items-center justify-start
+          className="self-start mb-5 text-mika-primary -translate-x-1 flex items-center justify-start
       md:absolute md:-top-15 md:left-0 md:translate-0 md:mb-0"
         >
           <ArrowBoxedClientIcon className="size-8 md:size-13" />
-          <h2 className="font-extrabold text-mika-primary text-xl xl:text-nav-item">
+          <h2 className="font-extrabold  text-xl xl:text-nav-item">
             INSCRIPCIÓN
           </h2>
         </div>
