@@ -37,7 +37,7 @@ const ShortsVideoCard: React.FC<Props> = ({ data }) => {
   }, []);
 
   return (
-    <div className="relative aspect-[9/16] w-screen h-screen sm:w-auto sm:h-[calc(100vh-var(--h-navbar)-20px)] sm:mx-auto sm:mt-[10px]">
+    <div className="relative aspect-[9/16] h-full sm:w-auto sm:h-[calc(100vh-var(--h-navbar)-20px)] sm:mx-auto sm:mt-[10px]">
       <video
         ref={videoRef}
         className="h-full w-full object-contain sm:rounded-4xl"
@@ -47,7 +47,7 @@ const ShortsVideoCard: React.FC<Props> = ({ data }) => {
         autoPlay
         playsInline
       >
-        <source src={data.src} type="video/mp4" />
+        <source src={data.src} type="video/webm" />
         Tu navegador no soporta video.
       </video>
       <div className="absolute top-0 left-0 w-full h-[30%] bg-gradient-to-b from-black/80 to-transparent z-0 pointer-events-none sm:rounded-4xl" />
@@ -64,7 +64,9 @@ const ShortsVideoCard: React.FC<Props> = ({ data }) => {
         <p className="mt-2 text-sm line-clamp-3">{data.description}</p>
       </div>
 
-      <div className="absolute bottom-25 -right-15 text-white z-10 flex flex-col gap-4">
+      <div
+        className={`absolute bottom-25 right-2 sm:-right-15 z-10 flex flex-col gap-4 text-white`}
+      >
         <LikeButton likes={data.likes} />
         <ShortVideoAction icon={CommentIcon} label={millify(data.comments)} />
         <ShortVideoAction icon={ShareArrowIcon} label={millify(data.shares)} />

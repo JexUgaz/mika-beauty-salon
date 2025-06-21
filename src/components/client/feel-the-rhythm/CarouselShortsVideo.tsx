@@ -1,33 +1,37 @@
 import type { ShortVideoData } from "@/types/ShortVideoData";
 import ShortsVideoCard from "./ShortsVideoCard";
 import Carousel from "@/components/client/Carousel";
-import CustomCarouselController from "./CustomCarouselController";
 import { BreakPoints } from "@/types/BreakPoints";
+import { useIsTouchVideoRestricted } from "@/utils/client/hooks/useIsTouchVideoRestricted";
+import CustomCarouselController from "./CustomCarouselController";
 
 interface Props {
   data: ShortVideoData[];
 }
 
 const CarouselShortsVideo: React.FC<Props> = ({ data }) => {
+  const isTouchVideoRestricted = useIsTouchVideoRestricted();
   const builder = (index: number) => <ShortsVideoCard data={data[index]} />;
 
-  const nextButton = (onClick: () => void) => (
+  const prevButton = (onClick: () => void, index: number) => (
     <CustomCarouselController
       onClick={onClick}
-      className="translate-y-5"
-      iconClassName="rotate-270"
+      show={index !== 0}
+      type="to-top"
     />
   );
-  const prevButton = (onClick: () => void) => (
+
+  const nextButton = (onClick: () => void, index: number) => (
     <CustomCarouselController
       onClick={onClick}
-      className="-translate-y-25"
-      iconClassName="rotate-90"
+      show={index !== data.length - 1}
+      type="to-bottom"
     />
   );
 
   return (
     <Carousel
+      key={`carousel-${isTouchVideoRestricted}`}
       direction="vertical"
       builder={builder}
       length={data.length}
@@ -39,9 +43,9 @@ const CarouselShortsVideo: React.FC<Props> = ({ data }) => {
       buildNextButton={nextButton}
       buildPrevButton={prevButton}
       showArrowsPerBreakpoint={(breakpoint) =>
-        [BreakPoints["2MD"]].includes(breakpoint)
+        [BreakPoints["2MD"]].includes(breakpoint) || isTouchVideoRestricted
       }
-      loop
+      loop={false}
       useVirtual
       mousewheel
     />

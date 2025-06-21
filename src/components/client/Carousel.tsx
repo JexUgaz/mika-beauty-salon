@@ -26,8 +26,8 @@ interface Props {
   useVirtual?: boolean;
   prevButtonClass?: string;
   nextButtonClass?: string;
-  buildPrevButton?: (onClick: () => void) => React.ReactNode;
-  buildNextButton?: (onClick: () => void) => React.ReactNode;
+  buildPrevButton?: (onClick: () => void, index: number) => React.ReactNode;
+  buildNextButton?: (onClick: () => void, index: number) => React.ReactNode;
 }
 
 const buildSwiperBreakpoints = (
@@ -72,6 +72,7 @@ const Carousel: React.FC<Props> = ({
   buildNextButton,
   showOverflow = false,
 }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const [showArrowsByBreakpoint, setShowArrowsByBreakpoint] =
     useState(showArrows);
   const [autoplayByBreakpoint, setAutoplayByBreakpoint] = useState(autoplay);
@@ -112,6 +113,7 @@ const Carousel: React.FC<Props> = ({
         mousewheel={mousewheel}
         breakpoints={breakpoints}
         loop={loop}
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
         autoplay={{
           delay: autoplayDelay,
           disableOnInteraction: false,
@@ -141,7 +143,7 @@ const Carousel: React.FC<Props> = ({
       {showArrowsByBreakpoint && (
         <>
           {buildPrevButton ? (
-            buildPrevButton(handlePrev)
+            buildPrevButton(handlePrev, activeIndex)
           ) : (
             <button
               onClick={handlePrev}
@@ -152,7 +154,7 @@ const Carousel: React.FC<Props> = ({
           )}
 
           {buildNextButton ? (
-            buildNextButton(handleNext)
+            buildNextButton(handleNext, activeIndex)
           ) : (
             <button
               onClick={handleNext}

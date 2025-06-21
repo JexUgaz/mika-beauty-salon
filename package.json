@@ -17,6 +17,7 @@
     "@types/react-dom": "^19.1.6",
     "astro": "^5.9.3",
     "firebase-tools": "^14.7.0",
+    "framer-motion": "^12.18.1",
     "millify": "^6.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

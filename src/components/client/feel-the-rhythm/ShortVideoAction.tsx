@@ -18,7 +18,7 @@ const ShortVideoAction: React.FC<Props> = ({
     className={`flex flex-col items-center gap-1 cursor-pointer ${className}`}
   >
     <div className="bg-black/50 rounded-full p-3">
-      <Icon className={`size-6 ${iconClassName ?? "text-white"}`} />
+      <Icon className={`size-5 sm:size-6 ${iconClassName ?? "text-white"}`} />
     </div>
     <p>{label}</p>
   </button>
