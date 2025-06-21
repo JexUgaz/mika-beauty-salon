@@ -7,11 +7,12 @@ import ContactNavItem from "./ContactNavItem.astro";
 import NavbarMobile from "@/components/client/navbar/NavbarMobile";
 
 interface Props {
+  logoClassName?: string;
   className?: string;
   useDarkMode?: boolean;
 }
 
-const { className = "", useDarkMode = false } = Astro.props;
+const { className = "", useDarkMode = false, logoClassName = "" } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 const navItems: NavbarItem[] = [
@@ -55,7 +56,7 @@ const breakpoints = useDarkMode ? [BreakPoints.LG] : [];
 ---
 
 <nav class={`${baseClass} ${className}`}>
-  <a href="/" class="h-full">
+  <a href="/" class={`h-full ${logoClassName}`}>
     <PictureResponsive
       sources={sources}
       breakpoints={breakpoints}

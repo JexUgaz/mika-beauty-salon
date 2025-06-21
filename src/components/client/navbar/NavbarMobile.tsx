@@ -4,6 +4,7 @@ import DrawerMobile from "./DrawerMobile";
 
 interface Props {
   items: NavbarItem[];
+  className?: string;
   currentPath: string;
   buttonClasses: string;
 }
@@ -11,6 +12,7 @@ interface Props {
 const NavbarMobile: React.FC<Props> = ({
   items,
   currentPath,
+  className = "",
   buttonClasses,
 }) => {
   console.log(currentPath);
@@ -18,7 +20,7 @@ const NavbarMobile: React.FC<Props> = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="lg:hidden">
+    <div className={`lg:hidden me-2 ${className}`}>
       <button
         onClick={() => setOpen(!open)}
         className={`p-2 focus:outline-none font-light text-2xl ${buttonClasses}`}

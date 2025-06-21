@@ -9,22 +9,8 @@ interface Props {
 
 const TestimonialCarousel: React.FC<Props> = ({ data }) => {
   const builder = (i: number) => {
-    const isMiddle = i === 1;
-    const baseClass = "sm:h-[85%] gap-y-9 ";
-    const className = isMiddle
-      ? `${baseClass} lg:h-[93%] lg:gap-y-18`
-      : baseClass;
-
     const item = data[i];
-
-    return (
-      <TestimonialCard
-        alt=""
-        src={item.image}
-        title={item.name}
-        className={`justify-self-center w-full ${className}`}
-      />
-    );
+    return <TestimonialCard alt="" src={item.image} title={item.name} />;
   };
   return (
     <Carousel
@@ -39,8 +25,9 @@ const TestimonialCarousel: React.FC<Props> = ({ data }) => {
       autoplayPerBreakpoint={(breakPoint) =>
         [BreakPoints.ZERO, BreakPoints.SM].includes(breakPoint)
       }
-      prevButtonClass="-left-8"
-      nextButtonClass="-right-8"
+      prevButtonClass="-left-8 text-mika-primary"
+      nextButtonClass="-right-8 text-mika-primary"
+      showOverflow
     />
   );
 };

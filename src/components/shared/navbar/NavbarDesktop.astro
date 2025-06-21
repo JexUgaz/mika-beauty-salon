@@ -11,9 +11,7 @@ interface Props {
 const { navItems, currentPath } = Astro.props;
 ---
 
-<ul
-  class="hidden lg:flex space-x-10 text-gray-800 font-bold items-center text-nav-item"
->
+<ul class="hidden lg:flex space-x-10 text-gray-800 items-center text-nav-item">
   {
     navItems.map((item) => {
       const isDirectMatch = item.href === currentPath;

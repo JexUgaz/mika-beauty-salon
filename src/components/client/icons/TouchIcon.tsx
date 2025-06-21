@@ -24,11 +24,3 @@ const TouchIcon: React.FC<Props> = ({ className }) => (
 );
 
 export default TouchIcon;
-
-// <defs>
-//   <style>
-//     .cls-1 {
-//       fill: none;
-//     }
-//   </style>
-// </defs>

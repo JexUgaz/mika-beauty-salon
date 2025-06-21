@@ -61,4 +61,11 @@
   }
 }
 
-@custom-variant md-height (@media (min-height: 43.75rem));
+@custom-variant xs-height (@media (min-height: 25rem)); /* 400px */
+@custom-variant sm-height (@media (min-height: 31.25rem)); /* 500px */
+@custom-variant md-height (@media (min-height: 43.75rem)); /* 700px */
+@custom-variant lg-height (@media (min-height: 50rem)); /* 800px */
+@custom-variant xl-height (@media (min-height: 56.25rem)); /* 900px */
+@custom-variant 2xl-height (@media (min-height: 62.5rem)); /* 1000px */
+@custom-variant 3xl-height (@media (min-height: 75rem)); /* 1200px */
+@custom-variant 4xl-height (@media (min-height: 87.5rem)); /* 1400px */

@@ -1,11 +1,20 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/shared/navbar/Navbar.astro";
+import FeelTheRhythmSection from "@/components/sections/becoming-more-myself/feel-the-rhythm/FeelTheRhythm.astro";
 ---
 
 <Layout class="relative">
-  <Navbar className="bg-white" />
-  <main class="w-full lg:h-[calc(100vh-var(--h-navbar))] xl:min-h-auto">
-    <section></section>
+  <Navbar
+    className="z-200 justify-end sm:z-10 bg-transparent sm:bg-white fixed sm:static sm:justify-between"
+    logoClassName="hidden sm:block"
+    useDarkMode={true}
+  />
+  <main
+    class="w-full h-screen sm:h-[calc(100vh-var(--h-navbar))] overflow-hidden"
+  >
+    <section class="h-full w-full flex justify-center items-center">
+      <FeelTheRhythmSection />
+    </section>
   </main>
 </Layout>

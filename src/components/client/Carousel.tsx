@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Mousewheel, Virtual } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import ArrowIcon from "./icons/ArrowIcon";
@@ -8,6 +8,7 @@ import type { SwiperModule } from "swiper/types";
 import type { BreakPoints } from "@/types/BreakPoints";
 
 interface Props {
+  direction?: "horizontal" | "vertical";
   spaceBetween?: number;
   autoplay?: boolean;
   loop?: boolean;
@@ -20,8 +21,13 @@ interface Props {
   className?: string;
   autoplayDelay?: number;
   showArrows?: boolean;
+  mousewheel?: boolean;
+  showOverflow?: boolean;
+  useVirtual?: boolean;
   prevButtonClass?: string;
   nextButtonClass?: string;
+  buildPrevButton?: (onClick: () => void) => React.ReactNode;
+  buildNextButton?: (onClick: () => void) => React.ReactNode;
 }
 
 const buildSwiperBreakpoints = (
@@ -47,18 +53,24 @@ const buildSwiperBreakpoints = (
 const Carousel: React.FC<Props> = ({
   length,
   builder,
+  useVirtual,
+  direction = "horizontal",
   spaceBetween = 20,
   responsiveBreakpoints = [],
   responsiveViews = [1],
   loop = true,
+  mousewheel = false,
   autoplay = false,
   className = "w-[550px] h-[600px]",
   autoplayDelay = 3000,
   showArrows = false,
-  prevButtonClass = "-left-20",
-  nextButtonClass = "-right-20",
+  prevButtonClass = "-left-20 text-mika-primary",
+  nextButtonClass = "-right-20 text-mika-primary",
   showArrowsPerBreakpoint,
   autoplayPerBreakpoint,
+  buildPrevButton,
+  buildNextButton,
+  showOverflow = false,
 }) => {
   const [showArrowsByBreakpoint, setShowArrowsByBreakpoint] =
     useState(showArrows);
@@ -69,18 +81,35 @@ const Carousel: React.FC<Props> = ({
 
   const modules: SwiperModule[] = [];
   if (autoplayByBreakpoint) modules.push(Autoplay);
+  if (mousewheel) modules.push(Mousewheel);
+  if (useVirtual) modules.push(Virtual);
 
   const breakpoints = buildSwiperBreakpoints(
     responsiveBreakpoints,
     responsiveViews
   );
 
+  const isVertical = direction === "vertical";
+
+  const prevButtonClassName = isVertical
+    ? `absolute top-1/2 ${prevButtonClass}`
+    : `absolute top-1/2 -translate-y-1/2 ${prevButtonClass}`;
+  const nextButtonClassName = isVertical
+    ? `absolute top-1/2 ${nextButtonClass}`
+    : `absolute top-1/2 -translate-y-1/2 ${nextButtonClass}`;
+
+  const prevIconRotation = isVertical ? "rotate-90" : "rotate-0";
+  const nextIconRotation = isVertical ? "rotate-270" : "rotate-180";
+
   return (
     <div className={`relative ${className}`}>
       <Swiper
         key={`carousel-${autoplayByBreakpoint}`}
+        style={{ overflow: showOverflow ? "visible" : "hidden" }}
+        direction={direction}
         spaceBetween={spaceBetween}
         modules={modules}
+        mousewheel={mousewheel}
         breakpoints={breakpoints}
         loop={loop}
         autoplay={{
@@ -88,7 +117,7 @@ const Carousel: React.FC<Props> = ({
           disableOnInteraction: false,
         }}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
-        className="rounded-lg w-full h-full"
+        className="w-full h-full"
         onBreakpoint={(swiper, _) => {
           const breakPoint = Number(swiper.currentBreakpoint);
           if (showArrowsPerBreakpoint) {
@@ -102,6 +131,7 @@ const Carousel: React.FC<Props> = ({
         {Array.from({ length }).map((_, i) => (
           <SwiperSlide
             key={`slide-${i}`}
+            virtualIndex={i}
             className="w-full h-full flex content-center"
           >
             {builder(i)}
@@ -110,18 +140,27 @@ const Carousel: React.FC<Props> = ({
       </Swiper>
       {showArrowsByBreakpoint && (
         <>
-          <button
-            onClick={handlePrev}
-            className={`absolute top-1/2 -translate-y-1/2 z-10 cursor-pointer ${prevButtonClass}`}
-          >
-            <ArrowIcon className="size-20 text-mika-primary" />
-          </button>
-          <button
-            onClick={handleNext}
-            className={`absolute top-1/2 -translate-y-1/2 z-10 cursor-pointer ${nextButtonClass}`}
-          >
-            <ArrowIcon className="size-20 text-mika-primary rotate-180" />
-          </button>
+          {buildPrevButton ? (
+            buildPrevButton(handlePrev)
+          ) : (
+            <button
+              onClick={handlePrev}
+              className={`z-10 cursor-pointer ${prevButtonClassName}`}
+            >
+              <ArrowIcon className={`size-20 ${prevIconRotation}`} />
+            </button>
+          )}
+
+          {buildNextButton ? (
+            buildNextButton(handleNext)
+          ) : (
+            <button
+              onClick={handleNext}
+              className={`z-10 cursor-pointer ${nextButtonClassName}`}
+            >
+              <ArrowIcon className={`size-20 ${nextIconRotation}`} />
+            </button>
+          )}
         </>
       )}
     </div>

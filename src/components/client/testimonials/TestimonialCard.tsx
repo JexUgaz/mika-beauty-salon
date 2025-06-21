@@ -2,16 +2,17 @@ interface Props {
   src: string;
   alt: string;
   title: string;
-  className: string;
 }
 
-const TestimonialCard: React.FC<Props> = ({ src, alt, title, className }) => (
+const TestimonialCard: React.FC<Props> = ({ src, alt, title }) => (
   <div
-    className={`bg-white rounded-xl shadow-md flex flex-col justify-center items-center p-4 ${className}`}
+    className={`bg-white rounded-xl shadow-md flex flex-col justify-center items-center p-4 justify-self-center w-full gap-y-9 
+        sm:h-[85%]
+        hover:scale-110 transition duration-400 ease-in-out`}
   >
     <div className="flex flex-col justify-center items-center">
       <div
-        className="w-[90%] overflow-hidden rounded-2xl  
+        className="w-[90%] overflow-hidden rounded-2xl
           xl:h-40 2xl:h-50 3xl:h-60"
       >
         <img src={src} alt={alt} className="w-full h-full object-cover" />
