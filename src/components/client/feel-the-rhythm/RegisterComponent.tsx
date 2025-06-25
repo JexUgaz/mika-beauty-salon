@@ -1,6 +1,7 @@
-import EmailIcon from "../icons/EmailIcon";
-import FacebookIcon from "../icons/FacebookIcon";
-import GoogleIcon from "../icons/GoogleIcon";
+import EmailIcon from "@/components/client/icons/EmailIcon";
+import FacebookIcon from "@/components/client/icons/FacebookIcon";
+import GoogleIcon from "@/components/client/icons/GoogleIcon";
+import { RippleButton } from "@/components/client/RippleButton";
 
 interface FormButtonProps {
   iconClassName?: string;
@@ -25,7 +26,11 @@ const FormButtonLogin: React.FC<FormButtonProps> = ({
   </button>
 );
 
-const RegisterComponent = () => {
+interface Props {
+  goBack: () => void;
+}
+
+const RegisterComponent: React.FC<Props> = ({ goBack }) => {
   const textColor = `text-[#737373]`;
   return (
     <div className="relative h-full w-full p-5 flex flex-col justify-center items-center gap-y-10 md-height:gap-y-20">
@@ -34,6 +39,7 @@ const RegisterComponent = () => {
         className="absolute h-full w-full -z-1 sm:rounded-4xl"
         src="/images/backgrounds/white-bg-vertical.webp"
       ></img>
+
       <h1 className="text-3xl md-height:text-4xl text-center font-semibold">
         Registrate en
         <br />
@@ -49,15 +55,16 @@ const RegisterComponent = () => {
           </p>
           <input
             className={`bg-[#efeae4] p-2 ps-20 w-full rounded-lg placeholder:${textColor} placeholder:text-base`}
-            type="text"
+            type="number"
             placeholder="Número de telefono"
           />
         </div>
-        <button
+        <RippleButton
+          onClick={goBack}
           className={`md-height:w-[70%] cursor-pointer font-bold transition-all duration-300 h-10 bg-mika-primary text-white hover:opacity-80 px-4 rounded`}
         >
           Continuar
-        </button>
+        </RippleButton>
 
         <span
           className={`relative w-[80%] inline-flex items-center justify-center ${textColor}`}

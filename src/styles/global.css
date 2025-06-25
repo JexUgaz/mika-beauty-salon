@@ -18,6 +18,7 @@
   --animate-hover-scale: hover-scale 0.4s forwards;
   --animate-pulse-scale: pulse-scale 1.5s infinite ease-in-out;
   --animate-shoe-shake: shoe-shake 0.5s infinite ease-in-out;
+  --animate-ripple: ripple 0.6s ease-out forwards;
 
   @keyframes hover-scale {
     0% {
@@ -51,6 +52,17 @@
     }
     75% {
       transform: translateX(-2px) rotate(-1deg);
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
     }
   }
 }

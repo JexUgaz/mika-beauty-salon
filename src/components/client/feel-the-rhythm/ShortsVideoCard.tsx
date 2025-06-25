@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import type { ShortVideoData } from "@/types/ShortVideoData";
 import { millify } from "millify";
 import RegisterComponent from "./RegisterComponent";
+import { RippleButton } from "@/components/client/RippleButton";
 
 interface Props {
   data: ShortVideoData;
@@ -35,8 +36,8 @@ const ShortsVideoCard: React.FC<Props> = ({ data }) => {
 
     observer.observe(video);
 
-    return () => observer.unobserve(video);
-  }, []);
+    return () => observer.disconnect();
+  }, [videoRef.current]);
 
   return (
     <div className="relative max-w-[100dvw] aspect-[9/16] h-full sm:w-auto sm:h-[calc(100dvh-var(--h-navbar)-20px)] sm:mx-auto sm:mt-[10px]">
@@ -56,7 +57,18 @@ const ShortsVideoCard: React.FC<Props> = ({ data }) => {
           </video>
           <div className="absolute top-0 left-0 w-full h-[30%] bg-gradient-to-b from-black/80 to-transparent z-0 pointer-events-none sm:rounded-4xl" />
 
-          {/* <div className="absolute"></div> // TODO: FALTA EL BOTON PARA MOSTRAR EL FORM...usar zustand para el navbar */}
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-300">
+            <RippleButton
+              className="size-18 md-height:size-20 rounded-full"
+              onClick={() => setShowRegister(true)}
+            >
+              <img
+                alt="Heels"
+                className="size-full transition-all duration-300"
+                src="/images/feel-the-rhythm/heels.webp"
+              />
+            </RippleButton>
+          </div>
 
           <div className="absolute top-5 left-5 text-white z-10 max-w-[80%]">
             <div className="flex items-center gap-2">
@@ -85,7 +97,9 @@ const ShortsVideoCard: React.FC<Props> = ({ data }) => {
           </div>
         </>
       )}
-      {showRegister && <RegisterComponent />}
+      {showRegister && (
+        <RegisterComponent goBack={() => setShowRegister(false)} />
+      )}
     </div>
   );
 };
