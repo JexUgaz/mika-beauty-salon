@@ -18,7 +18,7 @@ const Form: React.FC<Props> = ({ handleSubmit }) => (
         className="relative bg-white rounded-2xl w-full shadow-2xl
     px-5 pt-5 pb-2 flex flex-col justify-center items-center
     md:block md:px-8 md:pb-13 md:rounded-4xl
-    2xl:px-10 2xl:pt-13 2xl:pb-20"
+    2xl:px-10 2xl:pt-13"
       >
         <div
           className="self-start mb-5 text-mika-primary -translate-x-1 flex items-center justify-start
@@ -86,8 +86,8 @@ const Form: React.FC<Props> = ({ handleSubmit }) => (
               border-2 border-white text-white font-extrabold
               rounded-4xl cursor-pointer transition-all duration-300 ease-in-out
               hover:scale-105 hover:shadow-xl active:scale-95 text-sm mt-3
-              md:py-2 md:mt-0 md:absolute md:bottom-0 md:left-1/2 md:-translate-x-1/2 md:translate-y-1/2
-              md:min-w-[70%] md:w-auto 2xl:border-[3px] 2xl:py-5 2xl:text-xl"
+              md:h-13 md:mt-0 md:absolute md:bottom-0 md:left-1/2 md:-translate-x-1/2 md:translate-y-1/2
+              md:min-w-[70%] md:w-auto 2xl:border-[3px] 2xl:text-xl"
         >
           QUIERO DAR MI PRIMER PASO
           <TouchIcon className="ms-2 rotate-320" />

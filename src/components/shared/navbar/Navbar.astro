@@ -17,28 +17,28 @@ const currentPath = Astro.url.pathname;
 
 const navItems: NavbarItem[] = [
   { name: "Inicio", href: "/" },
-  { name: "Nosotros", href: "/about" },
+  { name: "Nosotros", href: "/about/" },
   {
     name: "Con cada paso soy más yo",
     children: [
       {
         name: "Mini Documental",
-        href: "/becoming-more-myself/mini-documentary",
+        href: "/becoming-more-myself/mini-documentary/",
       },
-      { name: "Testimonios", href: "/becoming-more-myself/testimonials" },
+      { name: "Testimonios", href: "/becoming-more-myself/testimonials/" },
       {
         name: "Siente el ritmo",
-        href: "/becoming-more-myself/feel-the-rhythm",
+        href: "/becoming-more-myself/feel-the-rhythm/",
       },
       {
         name: "Únete al reto",
-        href: "/becoming-more-myself/join-the-challenge",
+        href: "/becoming-more-myself/join-the-challenge/",
       },
     ],
   },
   {
     name: "Contacto",
-    href: "/contact",
+    href: "/contact/",
     component: ContactNavItem,
   },
 ];

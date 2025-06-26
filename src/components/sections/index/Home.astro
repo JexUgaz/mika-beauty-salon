@@ -23,7 +23,7 @@ import { BreakPoints } from "@/types/BreakPoints";
       xl:flex-row"
 >
   <div
-    class="relative flex flex-col items-center mt-[20vh]
+    class="relative animate__bounceInDown flex flex-col items-center mt-[20vh]
       xl:ps-[18vh] xl:w-[60%] xl:items-start xl:mt-0
        2xl:ps-[20vh] 3xl:-translate-y-5"
   >
@@ -81,14 +81,9 @@ import { BreakPoints } from "@/types/BreakPoints";
     </div>
     <ImageResponsive
       src={tacosPhoto}
-      widths={[110, 130, 200, 250, 300]}
+      widths={[110, 130, 200, 300]}
       alt="Tacos"
-      breakpoints={[
-        BreakPoints.SM,
-        BreakPoints.XL,
-        BreakPoints["2XL"],
-        BreakPoints["3XL"],
-      ]}
+      breakpoints={[BreakPoints.SM, BreakPoints.XL, BreakPoints["3XL"]]}
       class="z-25 absolute -right-4 top-7 rotate-5 xl:static xl:me-15 xl:rotate-0 xl:top-auto xl:right-auto"
     />
   </a>

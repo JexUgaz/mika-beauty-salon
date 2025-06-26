@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme static {
   --breakpoint-xs: 30rem;
@@ -70,6 +71,12 @@
 @layer base {
   :root {
     font-family: Poppins, sans-serif;
+  }
+}
+
+@layer utilities {
+  .animate__bounceInDown {
+    @apply animate-in slide-in-from-top duration-700 ease-out;
   }
 }
 

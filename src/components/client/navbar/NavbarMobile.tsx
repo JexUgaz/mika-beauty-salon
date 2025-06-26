@@ -15,8 +15,6 @@ const NavbarMobile: React.FC<Props> = ({
   className = "",
   useDarkMode,
 }) => {
-  console.log(currentPath);
-
   const [open, setOpen] = useState(false);
   const buttonClass = useDarkMode ? "text-white" : "text-mika-primary";
 
