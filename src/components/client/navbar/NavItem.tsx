@@ -8,7 +8,7 @@ interface Props {
 
 const NavItem: React.FC<Props> = ({ setOpen, item, isActive }) => {
   const baseClasses =
-    "relative block px-4 py-3 text-lg transition-all duration-300";
+    "font-title relative block px-4 py-3 text-lg transition-all duration-300";
   const afterClasses =
     "after:absolute after:left-4 after:bottom-2 after:h-[2px] after:bg-mika-primary after:transition-all after:duration-300";
 

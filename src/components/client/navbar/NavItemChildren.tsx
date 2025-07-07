@@ -41,7 +41,7 @@ const NavItemChildren: React.FC<Props> = ({
         className={`${itemClasses} ${activeClasses} ${lineClassActive}`}
         onClick={onSelectItem}
       >
-        <span>{item.name.toLocaleUpperCase()}</span>
+        <span className="font-title">{item.name.toLocaleUpperCase()}</span>
         <ArrowIcon
           className={`transform transition-transform duration-300 size-10 ${arrowClass}`}
         />
@@ -56,7 +56,7 @@ const NavItemChildren: React.FC<Props> = ({
           const isActive = currentPath === child.href;
 
           const linkBase =
-            "flex items-center gap-2 px-3 py-2 text-base font-medium transition-all duration-200";
+            "font-title flex items-center gap-2 px-3 py-2 text-base font-medium transition-all duration-200";
           const linkActive = "text-mika-primary bg-gray-100";
           const linkInactive = "text-gray-700 hover:bg-gray-200";
 

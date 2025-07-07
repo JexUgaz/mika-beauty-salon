@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -13,6 +12,7 @@
   --color-white: #fafafa;
 
   --text-nav-item: clamp(12px, 1.5vw, 24px);
+  --font-title: "League Spartan", Poppins, sans-serif;
 
   --h-navbar: 80px;
   --h-navbar-mobile: 60px;
