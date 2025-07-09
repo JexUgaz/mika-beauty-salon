@@ -5,6 +5,7 @@ import ImageResponsive from "@/components/shared/ImageResponsive.astro";
 import PictureResponsive from "@/components/shared/PictureResponsive.astro";
 import tacoImage from "@/assets/images/contact/taco.png";
 import { BreakPoints } from "@/types/BreakPoints";
+import YoutubeIcon from "@/components/icons/YoutubeIcon.astro";
 ---
 
 <PictureResponsive
@@ -19,18 +20,18 @@ import { BreakPoints } from "@/types/BreakPoints";
 
 <div
   class="relative bg-mika-primary shadow-lg rounded-t-4xl p-6 w-full max-w-3xl text-white
-  h-80 mt-25 md-height:mt-0 lg:h-90"
+  h-80 mt-25 md-height:mt-0 lg:h-100"
 >
   <h2
-    class="font-extrabold text-center mb-4 underline mt-10
+    class="font-extrabold text-center mb-4 underline mt-12
       text-3xl md:text-4xl xl:text-5xl"
   >
     Contacto
   </h2>
-  <div class="flex justify-center mt-13">
+  <div class="flex justify-center mt-10">
     <div
-      class="grid grid-cols-[60px_1fr_1fr] items-center justify-items-center gap-y-4 gap-x-2
-        lg:gap-y-8 lg:gap-x-6"
+      class="grid grid-cols-[60px_1fr_1fr] items-center justify-items-center gap-y-2 gap-x-2
+      lg:gap-y-4 lg:gap-x-6"
     >
       <a href="https://wa.link/q69cwb" target="_blank"
         ><WhatsappIcon class="text-white size-8 lg:size-10" /></a
@@ -40,9 +41,7 @@ import { BreakPoints } from "@/types/BreakPoints";
         href="https://wa.link/q69cwb"
         target="_blank"
       >
-        <p class="font-semibold text-xl sm:text-2xl lg:text-3xl">
-          +51 914 044 450
-        </p></a
+        <p class="font-semibold text-xl lg:text-2xl">+51 914 044 450</p></a
       >
 
       <a href="https://www.instagram.com/mika.beautysalon/" target="_blank"
@@ -52,15 +51,22 @@ import { BreakPoints } from "@/types/BreakPoints";
         class="col-span-2 justify-self-start"
         href="https://www.instagram.com/mika.beautysalon/"
         target="_blank"
-        ><p class="font-semibold text-xl sm:text-2xl lg:text-3xl">
-          @mika.beautysalon
-        </p>
+        ><p class="font-semibold text-xl lg:text-2xl">@mika.beautysalon</p>
+      </a>
+      <a href="https://www.youtube.com/@MIKABEAUTY-h8u" target="_blank"
+        ><YoutubeIcon class="text-white size-8 lg:size-12" /></a
+      >
+      <a
+        class="col-span-2 justify-self-start"
+        href="https://www.youtube.com/@MIKABEAUTY-h8u"
+        target="_blank"
+        ><p class="font-semibold text-xl lg:text-2xl">MIKA BEAUTY</p>
       </a>
     </div>
   </div>
 
   <div
-    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-18 xs:-translate-y-22 3xl:-translate-y-40"
+    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-18 xs:-translate-y-18 3xl:-translate-y-40"
   >
     <ImageResponsive
       src={tacoImage}
