@@ -4,6 +4,7 @@ import type { TestimonialData } from "@/types/TestimonialData";
 import { BreakPoints } from "@/types/BreakPoints";
 import { useRef, useState } from "react";
 import TestimonialModal from "./TestimonialModal";
+import TestimonialSkeletonSwiper from "./TestimonialSkeletonSwiper";
 
 interface Props {
   data: TestimonialData[];
@@ -34,6 +35,7 @@ const TestimonialCarousel: React.FC<Props> = ({ data }) => {
         builder={builder}
         length={data.length}
         responsiveViews={[1, 2, 3]}
+        fallback={<TestimonialSkeletonSwiper length={data.length} />}
         responsiveBreakpoints={[BreakPoints.SM, BreakPoints.LG]}
         showArrowsPerBreakpoint={(breakPoint) =>
           [BreakPoints.ZERO, BreakPoints.SM].includes(breakPoint)

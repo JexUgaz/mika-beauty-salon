@@ -13,6 +13,7 @@ interface Props {
   autoplay?: boolean;
   loop?: boolean;
   length: number;
+  fallback?: React.ReactNode;
   responsiveBreakpoints?: BreakPoints[];
   responsiveViews?: number[];
   builder: (index: number) => React.ReactNode;
@@ -68,6 +69,7 @@ const Carousel: React.FC<Props> = ({
   nextButtonClass = "-right-20 text-mika-primary",
   showArrowsPerBreakpoint,
   autoplayPerBreakpoint,
+  fallback,
   buildPrevButton,
   buildNextButton,
   showOverflow = false,
@@ -76,7 +78,10 @@ const Carousel: React.FC<Props> = ({
   const [showArrowsByBreakpoint, setShowArrowsByBreakpoint] =
     useState(showArrows);
   const [autoplayByBreakpoint, setAutoplayByBreakpoint] = useState(autoplay);
+
   const swiperRef = useRef<SwiperClass | null>(null);
+  const [isSwiperReady, setIsSwiperReady] = useState(!fallback);
+
   const handleNext = () => swiperRef.current?.slideNext();
   const handlePrev = () => swiperRef.current?.slidePrev();
 
@@ -118,7 +123,10 @@ const Carousel: React.FC<Props> = ({
           delay: autoplayDelay,
           disableOnInteraction: false,
         }}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          setIsSwiperReady(true);
+        }}
         className="w-full h-full"
         onBreakpoint={(swiper, _) => {
           const breakPoint = Number(swiper.currentBreakpoint);
@@ -136,10 +144,11 @@ const Carousel: React.FC<Props> = ({
             virtualIndex={i}
             className="w-full h-full flex content-center"
           >
-            {builder(i)}
+            {isSwiperReady && builder(i)}
           </SwiperSlide>
         ))}
       </Swiper>
+      {!isSwiperReady && fallback}
       {showArrowsByBreakpoint && (
         <>
           {buildPrevButton ? (

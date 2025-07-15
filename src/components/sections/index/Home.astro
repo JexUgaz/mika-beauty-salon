@@ -6,16 +6,23 @@ import ImageResponsive from "@/components/shared/ImageResponsive.astro";
 import { BreakPoints } from "@/types/BreakPoints";
 ---
 
-<video
-  autoplay
-  muted
-  loop
-  playsinline
-  class="absolute top-0 left-0 object-cover object-[60%_center] xl:object-center -z-200 w-full min-w-full min-h-full"
->
-  <source src="/videos/background.webm" type="video/webm" />
-  Tu navegador no soporta video.
-</video>
+<div class="top-0 left-0 absolute w-full h-full">
+  <img
+    src="/images/index/background.webp"
+    alt="Preview"
+    class="absolute w-full h-full object-cover -z-300"
+  />
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="object-cover object-[60%_center] xl:object-center -z-200 w-full min-w-full min-h-full"
+  >
+    <source src="/videos/background.webm" type="video/webm" />
+    Tu navegador no soporta video.
+  </video>
+</div>
 <div
   class="relative
       flex flex-col justify-start items-center
