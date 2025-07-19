@@ -4,11 +4,13 @@ import arrowIcon from "@/assets/images/shared/arrow-simple.webp";
 import tacosPhoto from "@/assets/images/home/tacos.webp";
 import ImageResponsive from "@/components/shared/ImageResponsive.astro";
 import { BreakPoints } from "@/types/BreakPoints";
+
+const { BASE_URL } = import.meta.env;
 ---
 
 <div class="top-0 left-0 absolute w-full h-full">
   <img
-    src="/images/index/background.webp"
+    src=`${BASE_URL}images/index/background.webp`
     alt="Preview"
     class="absolute w-full h-full object-cover -z-300"
   />
@@ -19,7 +21,7 @@ import { BreakPoints } from "@/types/BreakPoints";
     playsinline
     class="object-cover object-[60%_center] xl:object-center -z-200 w-full min-w-full min-h-full"
   >
-    <source src="/videos/background.webm" type="video/webm" />
+    <source src=`${BASE_URL}videos/background.webm` type="video/webm" />
     Tu navegador no soporta video.
   </video>
 </div>
@@ -44,7 +46,7 @@ import { BreakPoints } from "@/types/BreakPoints";
       <span class="font-extrabold">SOY MÁS YO</span>
     </h1>
     <a
-      href="/becoming-more-myself/join-the-challenge"
+      href=`${BASE_URL}becoming-more-myself/join-the-challenge`
       class="flex justify-center items-center rounded bg-mika-primary cursor-pointer
       px-5 h-12 mt-10 hover:opacity-90 transition w-fit
       lg:h-12 lg:px-10 xl:h-14 xl:px-15 xl:mt-5 2xl:h-17 2xl:px-20"
@@ -74,7 +76,7 @@ import { BreakPoints } from "@/types/BreakPoints";
     </span>
   </div>
   <a
-    href="/becoming-more-myself/feel-the-rhythm"
+    href=`${BASE_URL}becoming-more-myself/feel-the-rhythm`
     class="animate-pulse-scale flex relative mt-5 md-height:mt-[50px] size-40 cursor-pointer
     xl:absolute xl:right-20 xl:top-60 xl:flex-col xl:items-end xl:mt-0 xl:size-auto
     2xl:right-40"

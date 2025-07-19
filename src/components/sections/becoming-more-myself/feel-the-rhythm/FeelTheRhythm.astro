@@ -4,33 +4,35 @@ import PictureResponsive from "@/components/shared/PictureResponsive.astro";
 import { BreakPoints } from "@/types/BreakPoints";
 import type { ShortVideoData } from "@/types/ShortVideoData";
 
+const { BASE_URL } = import.meta.env;
+
 const data: ShortVideoData[] = [
   {
-    src: "/videos/feel-the-rhythm/girl1.webm",
+    src: `${BASE_URL}videos/feel-the-rhythm/girl1.webm`,
     username: "sofi.dance",
     description:
       "Bailando con actitud 💃🔥 #Empoderamiento #DanceLife #LatinaPower",
-    srcProfile: "/images/feel-the-rhythm/profile1.webp",
+    srcProfile: `${BASE_URL}images/feel-the-rhythm/profile1.webp`,
     likes: 18200,
     comments: 254,
     shares: 1300,
   },
   {
-    src: "/videos/feel-the-rhythm/girl2.webm",
+    src: `${BASE_URL}videos/feel-the-rhythm/girl2.webm`,
     username: "Olenka.vibes",
     description:
       "Este ritmo me representa 🎶💪 #GirlPower #MovimientoFemenino #DanceChallenge",
-    srcProfile: "/images/feel-the-rhythm/profile2.webp",
+    srcProfile: `${BASE_URL}images/feel-the-rhythm/profile2.webp`,
     likes: 9850,
     comments: 179,
     shares: 740,
   },
   {
-    src: "/videos/feel-the-rhythm/girl3.webm",
+    src: `${BASE_URL}videos/feel-the-rhythm/girl3.webm`,
     username: "Olenka.vibes",
     description:
       "No es solo un paso, es una declaración 🔥👠 #SoyFuego #DanceWithPower #Actitud",
-    srcProfile: "/images/feel-the-rhythm/profile2.webp",
+    srcProfile: `${BASE_URL}images/feel-the-rhythm/profile2.webp`,
     likes: 24750,
     comments: 392,
     shares: 2150,
@@ -39,7 +41,7 @@ const data: ShortVideoData[] = [
 ---
 
 <PictureResponsive
-  sources={["/backgrounds/red-bg-vertical.webp", "/backgrounds/red-bg.webp"]}
+  sources={[`/backgrounds/red-bg-vertical.webp`, `/backgrounds/red-bg.webp`]}
   breakpoints={[BreakPoints.XL]}
   classPicture="hidden lg:block absolute top-0 left-0 -z-200 min-w-full min-h-[100dvh] h-full w-full"
   classImage="min-w-full min-h-[100dvh] object-cover h-full w-full"

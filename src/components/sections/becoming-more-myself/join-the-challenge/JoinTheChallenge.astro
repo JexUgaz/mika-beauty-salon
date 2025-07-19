@@ -5,12 +5,14 @@ import { BreakPoints } from "@/types/BreakPoints";
 import ImageResponsive from "@/components/shared/ImageResponsive.astro";
 import checkImage from "@/assets/images/join-the-challenge/check.png";
 import chipsImage from "@/assets/images/join-the-challenge/chips.png";
+
+const { BASE_URL } = import.meta.env;
 ---
 
 <PictureResponsive
   sources={[
-    "/backgrounds/white-bg-vertical.webp",
-    "/backgrounds/white-bg.webp",
+    `/backgrounds/white-bg-vertical.webp`,
+    `/backgrounds/white-bg.webp`,
   ]}
   breakpoints={[BreakPoints.XL]}
   classPicture="absolute top-0 left-0 -z-200 min-w-full min-h-[100dvh] h-full w-full"

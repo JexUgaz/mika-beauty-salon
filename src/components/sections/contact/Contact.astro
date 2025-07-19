@@ -6,12 +6,14 @@ import PictureResponsive from "@/components/shared/PictureResponsive.astro";
 import tacoImage from "@/assets/images/contact/taco.png";
 import { BreakPoints } from "@/types/BreakPoints";
 import YoutubeIcon from "@/components/icons/YoutubeIcon.astro";
+
+const { BASE_URL } = import.meta.env;
 ---
 
 <PictureResponsive
   sources={[
-    "/backgrounds/white-bg-vertical.webp",
-    "/backgrounds/white-bg.webp",
+    `/backgrounds/white-bg-vertical.webp`,
+    `/backgrounds/white-bg.webp`,
   ]}
   breakpoints={[BreakPoints.XL]}
   classPicture="absolute top-0 left-0 -z-200 h-full w-full"

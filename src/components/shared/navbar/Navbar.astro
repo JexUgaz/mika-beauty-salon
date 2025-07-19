@@ -12,33 +12,37 @@ interface Props {
   useDarkMode?: boolean;
 }
 
+const { BASE_URL } = import.meta.env;
 const { className = "", useDarkMode = false, logoClassName = "" } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 const navItems: NavbarItem[] = [
-  { name: "Inicio", href: "/" },
-  { name: "Nosotros", href: "/about/" },
+  { name: "Inicio", href: `${BASE_URL}` },
+  { name: "Nosotros", href: `${BASE_URL}about/` },
   {
     name: "Con cada paso soy más yo",
     children: [
       {
         name: "Con cada paso soy más yo",
-        href: "/becoming-more-myself/mini-documentary/",
+        href: `${BASE_URL}becoming-more-myself/mini-documentary/`,
       },
-      { name: "Testimonios", href: "/becoming-more-myself/testimonials/" },
+      {
+        name: "Testimonios",
+        href: `${BASE_URL}becoming-more-myself/testimonials/`,
+      },
       {
         name: "Siente el ritmo",
-        href: "/becoming-more-myself/feel-the-rhythm/",
+        href: `${BASE_URL}becoming-more-myself/feel-the-rhythm/`,
       },
       {
         name: "Únete al reto",
-        href: "/becoming-more-myself/join-the-challenge/",
+        href: `${BASE_URL}becoming-more-myself/join-the-challenge/`,
       },
     ],
   },
   {
     name: "Contacto",
-    href: "/contact/",
+    href: `${BASE_URL}contact/`,
     component: ContactNavItem,
   },
 ];
@@ -56,7 +60,7 @@ const breakpoints = useDarkMode ? [BreakPoints.LG] : [];
 ---
 
 <nav class={`${baseClass} ${className}`}>
-  <a href="/" class={`h-full ${logoClassName}`}>
+  <a href={BASE_URL} class={`h-full ${logoClassName}`}>
     <PictureResponsive
       sources={sources}
       breakpoints={breakpoints}

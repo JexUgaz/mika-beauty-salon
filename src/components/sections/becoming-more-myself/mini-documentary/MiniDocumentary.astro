@@ -1,10 +1,11 @@
 ---
 import PictureResponsive from "@/components/shared/PictureResponsive.astro";
 import { BreakPoints } from "@/types/BreakPoints";
+const { BASE_URL } = import.meta.env;
 ---
 
 <PictureResponsive
-  sources={["/backgrounds/red-bg-vertical.webp", "/backgrounds/red-bg.webp"]}
+  sources={[`/backgrounds/red-bg-vertical.webp`, `/backgrounds/red-bg.webp`]}
   breakpoints={[BreakPoints.XL]}
   classPicture="absolute top-0 left-0 -z-200 min-w-full min-h-[100dvh] h-full w-full"
   classImage="min-w-full min-h-[100dvh] object-cover h-full w-full"
@@ -21,7 +22,7 @@ import { BreakPoints } from "@/types/BreakPoints";
       oncontextmenu="return false;"
       class="w-full h-full object-contain object-center"
     >
-      <source src="/videos/heels.webm" type="video/webm" />
+      <source src=`${BASE_URL}videos/heels.webm` type="video/webm" />
       Tu navegador no soporta video.
     </video>
   </div>

@@ -4,22 +4,23 @@ import PictureResponsive from "@/components/shared/PictureResponsive.astro";
 import { BreakPoints } from "@/types/BreakPoints";
 import type { TestimonialData } from "@/types/TestimonialData";
 import ArrowBoxed from "@/components/icons/ArrowBoxed.astro";
+const { BASE_URL } = import.meta.env;
 
 const data: TestimonialData[] = [
   {
-    image: "/images/testimonials/1.webp",
+    image: `${BASE_URL}images/testimonials/1.webp`,
     name: "Olenka",
     description:
       "Antes me costaba sentirme cómoda en mi propia piel. Siempre estaba tratando de encajar o de esconderme. Pero el heels me mostró otra forma de verme: más fuerte, más libre, más yo. En cada coreografía encontré una parte de mí que estaba dormida. Hoy me muevo con más confianza, con más amor propio, y con la certeza de que merezco ocupar espacio, ser vista y sentirme poderosa.",
   },
   {
-    image: "/images/testimonials/2.webp",
+    image: `${BASE_URL}images/testimonials/2.webp`,
     name: "Barbara",
     description:
       "Empecé en el baile con tacones por curiosidad, pero se volvió algo muy personal. Cada paso me enseñó a dejar de juzgar mi cuerpo y empezar a celebrarlo. Ahora camino con más seguridad, me muevo sin miedo y, sobre todo, me acepto tal como soy.",
   },
   {
-    image: "/images/testimonials/3.webp",
+    image: `${BASE_URL}images/testimonials/3.webp`,
     name: "Andrea",
     description:
       "Hubo una etapa en la que me costaba mucho sentirme segura en mi cuerpo. Empezar a bailar heels fue como volver a mí. Cada clase me ayudó a soltar el miedo, a reconectarme con mi fuerza y a recuperar la confianza que había perdido. Hoy me siento más firme, más libre y mucho más segura de quién soy.",

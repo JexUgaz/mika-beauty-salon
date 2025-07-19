@@ -1,1 +1,0 @@
-import{j as o}from"./jsx-runtime.D_zvdyIk.js";const t=({className:r})=>o.jsx("svg",{className:r,height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",children:o.jsx("path",{d:"M15 7L10 12L15 17",strokeWidth:"1.5",strokeLinecap:"round",strokeLinejoin:"round"})});export{t as A};

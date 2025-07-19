@@ -12,6 +12,8 @@ const {
   description = "Salón de belleza y cuidado personal",
   class: bodyClass = "",
 } = Astro.props;
+
+const { BASE_URL } = import.meta.env;
 ---
 
 <!doctype html>
@@ -22,7 +24,7 @@ const {
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href=`${BASE_URL}images/favicon.ico` type="image/x-icon" />
 
     <meta name="generator" content={Astro.generator} />
 

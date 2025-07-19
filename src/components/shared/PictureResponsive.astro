@@ -9,6 +9,8 @@ interface Props {
   classImage?: string;
 }
 
+const { BASE_URL } = import.meta.env;
+
 const {
   sources,
   breakpoints,
@@ -35,10 +37,10 @@ const sourceEntries = sources.slice(0, -1);
   {
     sourceEntries.map((src, i) => (
       <source
-        srcset={`/images${src}`}
+        srcset={`${BASE_URL}images${src}`}
         media={`(max-width: ${breakpoints[i]}px)`}
       />
     ))
   }
-  <img src={`/images${imgSrc}`} alt={alt} class={classImage} />
+  <img src={`${BASE_URL}images${imgSrc}`} alt={alt} class={classImage} />
 </picture>

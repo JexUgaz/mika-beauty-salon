@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && gh-pages -d dist"
+    "deploy": "astro build && gh-pages -d dist -b gh-pages --cname mika-beauty-salon.jexugaz.work"
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",

@@ -6,12 +6,14 @@ import tacoImage from "@/assets/images/about/taco.png";
 import ImageResponsive from "@/components/shared/ImageResponsive.astro";
 import AboutCarousel from "@/components/client/about/AboutCarousel";
 const imagesCarousel = Array.from({ length: 4 }, (_, i) => i + 1);
+
+const { BASE_URL } = import.meta.env;
 ---
 
 <PictureResponsive
   sources={[
-    "/backgrounds/white-bg-vertical.webp",
-    "/backgrounds/white-bg.webp",
+    `/backgrounds/white-bg-vertical.webp`,
+    `/backgrounds/white-bg.webp`,
   ]}
   breakpoints={[BreakPoints.XL]}
   classPicture="absolute top-0 left-0 -z-200 min-w-full min-h-[100dvh] h-full w-full"
@@ -27,7 +29,7 @@ const imagesCarousel = Array.from({ length: 4 }, (_, i) => i + 1);
 
 <AboutCarousel
   client:load
-  images={imagesCarousel.map((i) => `/images/about/${i}.webp`)}
+  images={imagesCarousel.map((i) => `${BASE_URL}images/about/${i}.webp`)}
 />
 <div
   class="z-1 pt-5 px-5
