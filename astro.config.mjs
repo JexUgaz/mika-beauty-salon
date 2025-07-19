@@ -6,6 +6,8 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "static",
+  base: "/mika-beauty-salon/",
   vite: {
     plugins: [tailwindcss()],
     resolve: {
