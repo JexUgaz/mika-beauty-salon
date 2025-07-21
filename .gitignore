@@ -26,3 +26,6 @@ pnpm-debug.log*
 .firebase/
 
 /public/**/*.mp4
+
+
+pnpm-lock.yaml
