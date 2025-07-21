@@ -1,48 +1,86 @@
-# Astro Starter Kit: Basics
+# 💃 Mika - Beauty Salon
 
-```sh
-pnpm create astro@latest -- --template basics
+Official website for the women's empowerment campaign organized by _Mika Beauty Salon_.  
+The project aims to inspire women through _Heels Dance_ (also known as _Strip Dance_), promoting self-esteem, sensuality, and personal power.
+
+🌐 **Live site:** [https://mika-beauty-salon.jexugaz.work](https://mika-beauty-salon.jexugaz.work)
+
+## 🎯 Purpose of the Website
+
+This site was created as part of a campaign to empower women.  
+The initiative is led by _Mika Beauty Salon_, offering a safe and motivating space where each woman can reconnect with her strength and sensuality.
+
+---
+
+## 📸 Preview
+
+![Mika Beauty Salon Banner](public/preview.webp)
+
+---
+
+## 🧾 Features
+
+- ✨ Beautiful and responsive design
+- 🎥 Short-form video sections with custom controls (like reels)
+- 🧴 Dedicated sections for:
+  - Learning about the campaign
+  - Testimonials
+  - Mini-documentary
+  - Direct contact
+- 📋 Contact form
+- 📱 Mobile-friendly
+- 🚀 Performance-optimized using Astro
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── assets/ # Images and static assets
+├── components/ # Shared and client-side components
+├── layouts/ # Base layout
+├── pages/ # Site routes
+├── styles/ # Global styles
+├── types/ # Custom TypeScript types
+└── utils/ # Hooks and utilities
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ⚙️ Local Setup and Development
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+1. **Clone the repository:**
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+git clone https://github.com/JexUgaz/mika-beauty-salon.git
+cd mika-beauty-salon
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+2. **Install dependencies:**
 
-## 🧞 Commands
+```bash
+npm install
+```
 
-All commands are run from the root of the project, from a terminal:
+3. **Start the development server:**
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npm run dev
+```
 
-## 👀 Want to learn more?
+## 📦 Build for Production
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+npm run build
+```
+
+The final output will be in the /dist folder.
+
+## 🧪 Tech Stack
+
+- [Astro](https://astro.build/)
+- [React](https://reactjs.org/) (for interactive components)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [GitHub Actions](https://github.com/features/actions) for deployment
